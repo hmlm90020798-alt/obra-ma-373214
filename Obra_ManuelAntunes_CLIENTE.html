@@ -1769,8 +1769,8 @@ const db = getFirestore(app);
 const DOC_REF = doc(db, 'obra', '373214');
 
 // ─── STATE ───
-const ADMIN_PIN = '2404';
-let adminMode = false;
+const ADMIN_PIN = '';
+const adminMode = false;
 let appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {} };
 
 // ─── FIRESTORE SYNC ───
@@ -2124,18 +2124,6 @@ window.removeNota = async function(idx) {
   renderNotes();
 }
 
-window.copyClientLink = function() {
-  const base = window.location.origin + window.location.pathname.replace('index.html', '');
-  const clientUrl = base + 'Obra_ManuelAntunes_CLIENTE.html';
-  navigator.clipboard.writeText(clientUrl).then(() => {
-    const fb = document.getElementById('copy-link-feedback');
-    fb.style.display = 'block';
-    setTimeout(() => { fb.style.display = 'none'; }, 3000);
-  }).catch(() => {
-    prompt('Copia este link:', clientUrl);
-  });
-}
-
 // ─── MATERIAL DINÂMICO ───
 const DEFAULT_MATERIAL = {
   cozinha: [
@@ -2232,63 +2220,6 @@ window.saveMaterialField = async function(panel, idx, field, value) {
   if (field === 'estado') renderMaterial();
 }
 
-// ─── ADMIN MODE ───
-window.toggleAdmin = function() {
-  if (adminMode) { exitAdmin(); }
-  else {
-    const pin = prompt('PIN de acesso:');
-    if (pin === ADMIN_PIN) { enterAdmin(); }
-    else if (pin !== null) { alert('PIN incorreto.'); }
-  }
-}
-
-function enterAdmin() {
-  adminMode = true;
-  document.getElementById('admin-btn').textContent = '✕ Sair do Admin';
-  document.getElementById('admin-btn').style.color = 'var(--red)';
-  document.getElementById('admin-btn').style.borderColor = 'var(--red)';
-  document.getElementById('admin-panel').style.display = 'block';
-  document.querySelectorAll('[data-editable]').forEach(el => {
-    el.contentEditable = 'true';
-    el.style.border = '1px dashed var(--gold)';
-    el.style.padding = '4px';
-    el.style.outline = 'none';
-    el.addEventListener('blur', saveEditableTexts);
-  });
-  document.getElementById('coz-antes-col').title = 'Clica para carregar imagem do projeto inicial';
-  document.getElementById('coz-agora-col').title = 'Clica para carregar imagem do projeto atual';
-  renderPhotoGrids();
-  renderEvolucao();
-  renderNotes();
-  applyLinks();
-  renderMaterial();
-}
-
-function exitAdmin() {
-  adminMode = false;
-  document.getElementById('admin-btn').textContent = '⚙ Admin';
-  document.getElementById('admin-btn').style.color = '';
-  document.getElementById('admin-btn').style.borderColor = '';
-  document.getElementById('admin-panel').style.display = 'none';
-  document.querySelectorAll('[data-editable]').forEach(el => {
-    el.contentEditable = 'false';
-    el.style.border = '';
-    el.style.padding = '';
-    el.removeEventListener('blur', saveEditableTexts);
-  });
-  renderPhotoGrids();
-  renderEvolucao();
-  renderNotes();
-  applyLinks();
-  renderMaterial();
-}
-
-async function saveEditableTexts() {
-  document.querySelectorAll('[data-editable]').forEach(el => {
-    if (el.id) appData.texts[el.id] = el.textContent;
-  });
-  await saveData();
-}
 
 // ─── APPLY DATA ───
 function applyData() {
@@ -2319,35 +2250,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
   <div style="position:absolute;top:20px;right:24px;color:var(--text-dim);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;">ESC / clica para fechar</div>
 </div>
 
-<!-- ADMIN BUTTON -->
-<button id="admin-btn" onclick="toggleAdmin()" style="position:fixed;bottom:24px;right:24px;z-index:200;background:var(--bg2);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;padding:10px 16px;cursor:pointer;">⚙ Admin</button>
 
-<!-- ADMIN PANEL -->
-<div id="admin-panel" style="display:none;position:fixed;bottom:70px;right:24px;z-index:200;background:var(--bg2);border:1px solid var(--gold);padding:20px;width:300px;max-height:70vh;overflow-y:auto;">
-  <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Modo Administrador</div>
-  <div style="font-size:11px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;">
-    · Clica nas fotos para substituir<br>
-    · Clica nos textos com borda dourada para editar<br>
-    · Na cozinha, clica em "Projeto Inicial" / "Projeto Atual" para carregar imagens<br>
-    · Na evolução, clica em "Substituir foto"
-  </div>
-
-  <div style="margin-bottom:16px;">
-    <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Link do Cliente</div>
-    <button onclick="copyClientLink()" id="copy-link-btn" style="width:100%;background:var(--bg3);border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:10px;cursor:pointer;">🔗 Copiar Link do Cliente</button>
-    <div id="copy-link-feedback" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--green);text-align:center;margin-top:6px;display:none;">✓ Link copiado!</div>
-  </div>
-  <div style="height:1px;background:var(--gold-border);margin-bottom:16px;"></div>
-  <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Adicionar Nota</div>
-  <select id="nota-tipo" style="width:100%;background:var(--bg3);border:1px solid var(--gold-border);color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:8px;">
-    <option>Informação</option>
-    <option>Reclamação</option>
-    <option>Resolução</option>
-  </select>
-  <textarea id="nota-texto" placeholder="Texto da nota..." style="width:100%;height:80px;background:var(--bg3);border:1px solid var(--gold-border);color:var(--text);padding:8px;font-size:12px;resize:none;margin-bottom:8px;"></textarea>
-  <button onclick="addNota()" style="width:100%;background:var(--gold);color:var(--bg);border:none;padding:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;">Adicionar Nota</button>
-  <button onclick="saveTexts();saveEvolucaoTexts();alert('Guardado.');" style="width:100%;background:none;border:1px solid var(--gold-border);color:var(--text-dim);padding:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;margin-top:8px;">Guardar Tudo</button>
-</div>
 
 </body>
 </html>
