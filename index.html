@@ -1080,11 +1080,14 @@ footer {
     </div>
 
     <!-- COLUNA DEPOIS -->
-    <div style="background:var(--bg2);border:1px solid var(--gold-border);padding:28px 28px 24px;">
+    <div style="background:linear-gradient(135deg,#1a1608 0%,#1c1a0e 100%);border:1px solid var(--gold);padding:28px 28px 24px;box-shadow:0 0 40px rgba(196,169,106,0.08);">
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Junho 2026 · Atualizado</div>
 
       <div style="margin-bottom:18px;">
-        <div style="font-size:11px;color:var(--text-mid);margin-bottom:4px;">Mão de Obra</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+          <span style="font-size:11px;color:var(--text-mid);">Mão de Obra</span>
+          <a href="#trabalhos" style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--gold);text-decoration:none;opacity:0.7;">ver trabalhos →</a>
+        </div>
         <div style="display:flex;align-items:center;gap:8px;">
           <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
             <div style="width:48.2%;height:100%;background:rgba(200,200,200,0.4);border-radius:2px;"></div>
@@ -1149,9 +1152,9 @@ footer {
         <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--red);">+ iluminação LED a orçamentar</div>
       </div>
 
-      <div style="border-top:1px solid var(--gold-border);margin-top:20px;padding-top:16px;display:flex;justify-content:space-between;align-items:baseline;">
+      <div style="border-top:1px solid var(--gold);margin-top:20px;padding-top:16px;display:flex;justify-content:space-between;align-items:baseline;">
         <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);">Total confirmado</span>
-        <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold-light);">27.414,39 €</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold-light);">27.414,39 €</span>
       </div>
       <div style="text-align:right;margin-top:4px;">
         <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);">+640,39 € face ao adjudicado</span>
@@ -1237,39 +1240,15 @@ footer {
     <div id="add-photo-btn-cozinha" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('cozinha')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
-    <div class="mat-mini" style="margin-top:24px;">
+    <div class="mat-mini" style="margin-top:24px;" id="mat-cozinha-container">
       <div class="mat-mini-header">
         <span>Material · Cozinha</span>
-        <span style="color:var(--gold-light)">4.483,26 €</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span id="mat-cozinha-total" style="color:var(--gold-light)">4.483,26 €</span>
+          <button id="mat-cozinha-add-btn" onclick="addMaterialItem('cozinha')" style="display:none;background:none;border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;cursor:pointer;">+ Artigo</button>
+        </div>
       </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Microondas Grill 60 MC 20 Inox Cata</span>
-        <a id="link-coz-1" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Exaustor Ocultável AEG DGE5661HM 700m³ Inox</span>
-        <a id="link-coz-2" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Tampo Bancada Fenólico Mármora PT 300×63×1,2cm</span>
-        <a id="link-coz-3" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Lava-Louças 1 Cuba Sup. Delinia Loft 45×51.5 Inox</span>
-        <a id="link-coz-4" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Forno Multifunções Cata MDS 6106 X VR01</span>
-        <a id="link-coz-5" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Placa Indução Cata IB 6324E2 BK</span>
-        <a id="link-coz-6" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Revestimento PVC Twilight Inspiro 75×45cm</span>
-        <a id="link-coz-7" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
+      <div id="mat-cozinha-items"><!-- dynamic --></div>
     </div>
   </div>
   </div>
@@ -1323,18 +1302,15 @@ footer {
         <span class="mat-mini-name">Móvel Casa de Banho Luca 80×45×84 2G/1P Branco</span>
         <a id="link-cb-3" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
       </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Lavatório Lupi 81×46 Centro BR BLH Gelcoat</span>
-        <a id="link-cb-4" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+    <div class="mat-mini" style="margin-top:24px;" id="mat-casabanho-container">
+      <div class="mat-mini-header">
+        <span>Material · Casa de Banho</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span id="mat-casabanho-total" style="color:var(--gold-light)">2.979,76 €</span>
+          <button id="mat-casabanho-add-btn" onclick="addMaterialItem('casabanho')" style="display:none;background:none;border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;cursor:pointer;">+ Artigo</button>
+        </div>
       </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Revestimento PVC Shine Inspiro 75×45cm</span>
-        <a id="link-cb-5" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Espelho Push 80×80 Bluetooth / Altifalante c/ Luz</span>
-        <a id="link-cb-6" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
+      <div id="mat-casabanho-items"><!-- dynamic --></div>
     </div>
   </div>
   </div>
@@ -1793,8 +1769,8 @@ const db = getFirestore(app);
 const DOC_REF = doc(db, 'obra', '373214');
 
 // ─── STATE ───
-const ADMIN_PIN = '';
-const adminMode = false;
+const ADMIN_PIN = '2404';
+let adminMode = false;
 let appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {} };
 
 // ─── FIRESTORE SYNC ───
@@ -2148,6 +2124,159 @@ window.removeNota = async function(idx) {
   renderNotes();
 }
 
+// ─── MATERIAL DINÂMICO ───
+const DEFAULT_MATERIAL = {
+  cozinha: [
+    { nome: 'Microondas Grill 60 MC 20 Inox Cata', link: '', estado: 'Por Entregar' },
+    { nome: 'Exaustor Ocultável AEG DGE5661HM 700m³ Inox', link: '', estado: 'Por Entregar' },
+    { nome: 'Tampo Bancada Fenólico Mármora PT 300×63×1,2cm', link: '', estado: 'Por Entregar' },
+    { nome: 'Lava-Louças 1 Cuba Sup. Delinia Loft 45×51.5 Inox', link: '', estado: 'Por Entregar' },
+    { nome: 'Forno Multifunções Cata MDS 6106 X VR01', link: '', estado: 'Por Entregar' },
+    { nome: 'Placa Indução Cata IB 6324E2 BK', link: '', estado: 'Por Entregar' },
+    { nome: 'Revestimento PVC Twilight Inspiro 75×45cm', link: '', estado: 'Por Entregar' },
+  ],
+  casabanho: [
+    { nome: 'Móvel Armário CH Zeus/Play 40×32×180 2G2P Branco', link: '', estado: 'Por Entregar' },
+    { nome: 'Móvel Cesto CH Zeus/Play 40×32×180 Branco', link: '', estado: 'Por Entregar' },
+    { nome: 'Móvel Casa de Banho Luca 80×45×84 2G/1P Branco', link: '', estado: 'Por Entregar' },
+    { nome: 'Lavatório Lupi 81×46 Centro BR BLH Gelcoat', link: '', estado: 'Por Entregar' },
+    { nome: 'Revestimento PVC Shine Inspiro 75×45cm', link: '', estado: 'Por Entregar' },
+    { nome: 'Espelho Push 80×80 Bluetooth / Altifalante c/ Luz', link: '', estado: 'Por Entregar' },
+  ]
+};
+
+const ESTADO_COLORS = {
+  'Por Entregar': 'var(--amber)',
+  'Entregue': 'var(--green)',
+  'Anulado': 'var(--red)'
+};
+
+function renderMaterial() {
+  ['cozinha', 'casabanho'].forEach(panel => {
+    const container = document.getElementById(`mat-${panel}-items`);
+    if (!container) return;
+    const addBtn = document.getElementById(`mat-${panel}-add-btn`);
+    if (addBtn) addBtn.style.display = adminMode ? 'inline-block' : 'none';
+
+    const items = (appData.material && appData.material[panel] && appData.material[panel].length)
+      ? appData.material[panel]
+      : DEFAULT_MATERIAL[panel];
+
+    container.innerHTML = '';
+    items.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'mat-mini-row';
+      row.style.alignItems = 'center';
+
+      const estadoColor = ESTADO_COLORS[item.estado] || 'var(--text-dim)';
+
+      if (adminMode) {
+        row.innerHTML = `
+          <span class="mat-mini-name" contenteditable="true" onblur="saveMaterialField('${panel}',${i},'nome',this.textContent)" style="outline:none;border-bottom:1px dashed var(--gold-border);flex:1;">${item.nome}</span>
+          <select onchange="saveMaterialField('${panel}',${i},'estado',this.value)" style="background:var(--bg3);border:1px solid var(--gold-border);color:${estadoColor};font-family:'DM Mono',monospace;font-size:9px;padding:2px 4px;margin:0 8px;cursor:pointer;">
+            <option ${item.estado==='Por Entregar'?'selected':''}>Por Entregar</option>
+            <option ${item.estado==='Entregue'?'selected':''}>Entregue</option>
+            <option ${item.estado==='Anulado'?'selected':''}>Anulado</option>
+          </select>
+          <input type="text" placeholder="URL produto..." value="${item.link||''}" onblur="saveMaterialField('${panel}',${i},'link',this.value)" style="background:var(--bg3);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:9px;padding:2px 6px;width:140px;">
+          <button onclick="removeMaterialItem('${panel}',${i})" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:12px;padding:0 4px;margin-left:4px;">✕</button>
+        `;
+      } else {
+        row.innerHTML = `
+          <span class="mat-mini-name">${item.nome}</span>
+          <span class="badge" style="background:${estadoColor}22;color:${estadoColor};border:1px solid ${estadoColor}44;font-family:'DM Mono',monospace;font-size:8px;padding:2px 6px;margin:0 8px;white-space:nowrap;">${item.estado}</span>
+          ${item.link ? `<a href="${item.link}" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;">ver produto →</a>` : '<span style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--text-dim);opacity:0.3;">—</span>'}
+        `;
+      }
+      container.appendChild(row);
+    });
+  });
+}
+
+window.addMaterialItem = async function(panel) {
+  if (!appData.material) appData.material = {};
+  if (!appData.material[panel] || !appData.material[panel].length) {
+    appData.material[panel] = [...DEFAULT_MATERIAL[panel]];
+  }
+  appData.material[panel].push({ nome: 'Novo artigo', link: '', estado: 'Por Entregar' });
+  await saveData();
+  renderMaterial();
+}
+
+window.removeMaterialItem = async function(panel, idx) {
+  if (!appData.material || !appData.material[panel]) return;
+  appData.material[panel].splice(idx, 1);
+  await saveData();
+  renderMaterial();
+}
+
+window.saveMaterialField = async function(panel, idx, field, value) {
+  if (!appData.material) appData.material = {};
+  if (!appData.material[panel] || !appData.material[panel].length) {
+    appData.material[panel] = [...DEFAULT_MATERIAL[panel]];
+  }
+  appData.material[panel][idx][field] = value;
+  await saveData();
+  if (field === 'estado') renderMaterial();
+}
+
+// ─── ADMIN MODE ───
+window.toggleAdmin = function() {
+  if (adminMode) { exitAdmin(); }
+  else {
+    const pin = prompt('PIN de acesso:');
+    if (pin === ADMIN_PIN) { enterAdmin(); }
+    else if (pin !== null) { alert('PIN incorreto.'); }
+  }
+}
+
+function enterAdmin() {
+  adminMode = true;
+  document.getElementById('admin-btn').textContent = '✕ Sair do Admin';
+  document.getElementById('admin-btn').style.color = 'var(--red)';
+  document.getElementById('admin-btn').style.borderColor = 'var(--red)';
+  document.getElementById('admin-panel').style.display = 'block';
+  document.querySelectorAll('[data-editable]').forEach(el => {
+    el.contentEditable = 'true';
+    el.style.border = '1px dashed var(--gold)';
+    el.style.padding = '4px';
+    el.style.outline = 'none';
+    el.addEventListener('blur', saveEditableTexts);
+  });
+  document.getElementById('coz-antes-col').title = 'Clica para carregar imagem do projeto inicial';
+  document.getElementById('coz-agora-col').title = 'Clica para carregar imagem do projeto atual';
+  renderPhotoGrids();
+  renderEvolucao();
+  renderNotes();
+  applyLinks();
+  renderMaterial();
+}
+
+function exitAdmin() {
+  adminMode = false;
+  document.getElementById('admin-btn').textContent = '⚙ Admin';
+  document.getElementById('admin-btn').style.color = '';
+  document.getElementById('admin-btn').style.borderColor = '';
+  document.getElementById('admin-panel').style.display = 'none';
+  document.querySelectorAll('[data-editable]').forEach(el => {
+    el.contentEditable = 'false';
+    el.style.border = '';
+    el.style.padding = '';
+    el.removeEventListener('blur', saveEditableTexts);
+  });
+  renderPhotoGrids();
+  renderEvolucao();
+  renderNotes();
+  applyLinks();
+  renderMaterial();
+}
+
+async function saveEditableTexts() {
+  document.querySelectorAll('[data-editable]').forEach(el => {
+    if (el.id) appData.texts[el.id] = el.textContent;
+  });
+  await saveData();
+}
 
 // ─── APPLY DATA ───
 function applyData() {
@@ -2160,6 +2289,7 @@ function applyData() {
   renderEvolucao();
   renderNotes();
   applyLinks();
+  renderMaterial();
 }
 
 // ─── INIT ───
@@ -2175,6 +2305,29 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 <div id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;cursor:zoom-out;">
   <img id="lightbox-img" src="" style="max-width:90vw;max-height:90vh;object-fit:contain;box-shadow:0 0 60px rgba(0,0,0,0.8);">
   <div style="position:absolute;top:20px;right:24px;color:var(--text-dim);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;">ESC / clica para fechar</div>
+</div>
+
+<!-- ADMIN BUTTON -->
+<button id="admin-btn" onclick="toggleAdmin()" style="position:fixed;bottom:24px;right:24px;z-index:200;background:var(--bg2);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;padding:10px 16px;cursor:pointer;">⚙ Admin</button>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel" style="display:none;position:fixed;bottom:70px;right:24px;z-index:200;background:var(--bg2);border:1px solid var(--gold);padding:20px;width:300px;max-height:70vh;overflow-y:auto;">
+  <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Modo Administrador</div>
+  <div style="font-size:11px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;">
+    · Clica nas fotos para substituir<br>
+    · Clica nos textos com borda dourada para editar<br>
+    · Na cozinha, clica em "Projeto Inicial" / "Projeto Atual" para carregar imagens<br>
+    · Na evolução, clica em "Substituir foto"
+  </div>
+  <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Adicionar Nota</div>
+  <select id="nota-tipo" style="width:100%;background:var(--bg3);border:1px solid var(--gold-border);color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:8px;">
+    <option>Informação</option>
+    <option>Reclamação</option>
+    <option>Resolução</option>
+  </select>
+  <textarea id="nota-texto" placeholder="Texto da nota..." style="width:100%;height:80px;background:var(--bg3);border:1px solid var(--gold-border);color:var(--text);padding:8px;font-size:12px;resize:none;margin-bottom:8px;"></textarea>
+  <button onclick="addNota()" style="width:100%;background:var(--gold);color:var(--bg);border:none;padding:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;">Adicionar Nota</button>
+  <button onclick="saveTexts();saveEvolucaoTexts();alert('Guardado.');" style="width:100%;background:none;border:1px solid var(--gold-border);color:var(--text-dim);padding:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;margin-top:8px;">Guardar Tudo</button>
 </div>
 
 </body>
