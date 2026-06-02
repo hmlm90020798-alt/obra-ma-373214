@@ -10,18 +10,18 @@
   --gold: #C4A96A;
   --gold-light: #D4BC8A;
   --gold-dim: rgba(196,169,106,0.15);
-  --gold-border: rgba(196,169,106,0.25);
+  --gold-border: rgba(196,169,106,0.35);
   --bg: #0D0D0D;
-  --bg2: #141414;
-  --bg3: #1A1A1A;
-  --bg4: #222222;
-  --text: #E8E0D0;
-  --text-dim: #8A8070;
-  --text-mid: #B8AFA0;
-  --red: #C45A5A;
-  --green: #6AAA7A;
-  --blue: #5A8AC4;
-  --amber: #C49A5A;
+  --bg2: #161616;
+  --bg3: #1E1E1E;
+  --bg4: #262626;
+  --text: #F0EAE0;
+  --text-dim: #A89F94;
+  --text-mid: #D0C8BC;
+  --red: #D96A6A;
+  --green: #7ABF8A;
+  --blue: #6A9AD4;
+  --amber: #D4A86A;
   --radius: 4px;
   --radius-lg: 8px;
 }
@@ -34,9 +34,10 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.7;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ─── HEADER ─── */
@@ -285,15 +286,15 @@ main {
 }
 
 .fin-row-label {
-  font-size: 12px;
-  color: var(--text-dim);
+  font-size: 13px;
+  color: var(--text-mid);
   flex: 1;
 }
 
 .fin-row-value {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  color: var(--text-mid);
+  font-size: 13px;
+  color: var(--text);
   white-space: nowrap;
 }
 
@@ -460,8 +461,8 @@ main {
 }
 
 .obra-panel-desc {
-  font-size: 13px;
-  color: var(--text-dim);
+  font-size: 14px;
+  color: var(--text-mid);
   max-width: 600px;
   line-height: 1.7;
 }
@@ -541,10 +542,10 @@ main {
 }
 
 .mat-mini-name {
-  font-size: 11px;
-  color: var(--text-dim);
+  font-size: 13px;
+  color: var(--text-mid);
   flex: 1;
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .mat-mini-status {
@@ -553,8 +554,8 @@ main {
 
 .mat-mini-val {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--text-mid);
+  font-size: 12px;
+  color: var(--text);
   white-space: nowrap;
 }
 
@@ -623,15 +624,15 @@ main {
 }
 
 .cal-phase {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text);
   font-weight: 500;
   margin-bottom: 4px;
 }
 
 .cal-desc {
-  font-size: 12px;
-  color: var(--text-dim);
+  font-size: 13px;
+  color: var(--text-mid);
   line-height: 1.6;
 }
 
@@ -675,15 +676,15 @@ main {
 }
 
 .trabalho-title {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text);
   margin-bottom: 3px;
   font-weight: 500;
 }
 
 .trabalho-desc {
-  font-size: 11px;
-  color: var(--text-dim);
+  font-size: 13px;
+  color: var(--text-mid);
   line-height: 1.6;
 }
 
@@ -733,15 +734,15 @@ main {
 
 .evolucao-date {
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.15em;
   color: var(--gold);
   margin-bottom: 4px;
 }
 
 .evolucao-caption {
-  font-size: 12px;
-  color: var(--text-dim);
+  font-size: 13px;
+  color: var(--text-mid);
   line-height: 1.5;
 }
 
@@ -793,7 +794,7 @@ main {
 }
 
 .nota-texto {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-mid);
   line-height: 1.7;
 }
