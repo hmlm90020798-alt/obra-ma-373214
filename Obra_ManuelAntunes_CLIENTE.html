@@ -1753,7 +1753,7 @@ footer {
 <script type="module">
 // ─── FIREBASE ───
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, collection, getDoc, getDocs, setDoc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBGdz1_ceb0mPsG2wfbG2tvg5bsYPn7zJo",
@@ -1767,31 +1767,72 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const DOC_REF = doc(db, 'obra', '373214');
+const FOTOS_REF = collection(db, 'obra', '373214', 'fotos');
 
 // ─── STATE ───
 const ADMIN_PIN = '';
 const adminMode = false;
-let appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {} };
+let appData = { texts: {}, notes: [], evolucao: [], links: {}, material: {} };
+let fotosCache = {}; // key -> base64, stored in subcollection
 
 // ─── FIRESTORE SYNC ───
 async function loadData() {
   try {
+    // Load main doc (texts, notes, evolucao metadata, links, material)
     const snap = await getDoc(DOC_REF);
-    if (snap.exists()) appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {}, ...snap.data() };
+    if (snap.exists()) {
+      const d = snap.data();
+      appData = { texts: {}, notes: [], evolucao: [], links: {}, material: {}, ...d };
+      // Strip any old photo data that might have snuck in
+      delete appData.photos;
+      delete appData.coz_imgs;
+    }
+    // Load photos subcollection
+    const fotosSnap = await getDocs(FOTOS_REF);
+    fotosCache = {};
+    fotosSnap.forEach(d => { fotosCache[d.id] = d.data().src; });
   } catch(e) { console.warn('Firestore load error:', e); }
-  return appData;
 }
 
 async function saveData() {
-  try { await setDoc(DOC_REF, appData); }
-  catch(e) { console.error('Firestore save error:', e); alert('Erro ao guardar. Verifica a ligação.'); }
+  try {
+    // Save main doc without photos
+    const toSave = { ...appData };
+    delete toSave.photos;
+    delete toSave.coz_imgs;
+    await setDoc(DOC_REF, toSave);
+  } catch(e) { console.error('Firestore save error:', e); alert('Erro ao guardar. Verifica a ligação.'); }
 }
 
-// Listen for real-time updates
+async function savePhoto(key, src) {
+  try {
+    await setDoc(doc(FOTOS_REF, key), { src });
+    fotosCache[key] = src;
+  } catch(e) { console.error('Photo save error:', e); alert('Erro ao guardar foto.'); }
+}
+
+async function deletePhoto(key) {
+  try {
+    await deleteDoc(doc(FOTOS_REF, key));
+    delete fotosCache[key];
+  } catch(e) { console.error('Photo delete error:', e); }
+}
+
+// Helper — get photos for a panel from cache
+function getPanelPhotos(panel) {
+  return Object.keys(fotosCache)
+    .filter(k => k.startsWith(panel + '_'))
+    .sort((a, b) => parseInt(a.split('_')[1]) - parseInt(b.split('_')[1]))
+    .map(k => ({ key: k, src: fotosCache[k] }));
+}
+
+// Listen for real-time updates on main doc
 function startRealtimeSync() {
   onSnapshot(DOC_REF, (snap) => {
     if (snap.exists() && !adminMode) {
-      appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {}, ...snap.data() };
+      const d = snap.data();
+      appData = { texts: {}, notes: [], evolucao: [], links: {}, material: {}, ...d };
+      delete appData.photos; delete appData.coz_imgs;
       applyData();
     }
   });
@@ -1846,7 +1887,7 @@ window.openImgLightbox = function(src) {
 }
 
 window.openLightbox = function(key) {
-  const src = appData.coz_imgs && appData.coz_imgs[key];
+  const src = fotosCache[`coz_${key}`];
   if (!src) {
     if (adminMode) { uploadCozImg(key); }
     else { alert('Imagem ainda não disponível.'); }
@@ -1866,9 +1907,7 @@ function renderPhotoGrids() {
   OBRA_PANELS.forEach(panel => {
     const grid = document.getElementById(`photos-${panel}`);
     if (!grid) return;
-    const panelPhotos = Object.keys(appData.photos || {})
-      .filter(k => k.startsWith(panel + '_'))
-      .sort((a,b) => parseInt(a.split('_')[1]) - parseInt(b.split('_')[1]));
+    const panelPhotos = getPanelPhotos(panel);
 
     grid.innerHTML = '';
 
@@ -1877,25 +1916,25 @@ function renderPhotoGrids() {
       return;
     }
 
-    panelPhotos.forEach(key => {
+    panelPhotos.forEach(({key, src}) => {
       const idx = key.split('_')[1];
       const slot = document.createElement('div');
       slot.className = 'photo-slot';
       slot.dataset.panel = panel;
       slot.dataset.index = idx;
       slot.style.position = 'relative';
-      slot.innerHTML = `<img src="${appData.photos[key]}" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">`;
+      slot.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">`;
       if (adminMode) {
         const rmBtn = document.createElement('button');
         rmBtn.textContent = '✕';
         rmBtn.style.cssText = 'position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.7);color:#fff;border:none;width:24px;height:24px;cursor:pointer;font-size:12px;z-index:10;';
-        rmBtn.onclick = (e) => { e.stopPropagation(); removePhoto(panel, idx); };
+        rmBtn.onclick = async (e) => { e.stopPropagation(); await deletePhoto(key); renderPhotoGrids(); };
         slot.appendChild(rmBtn);
         slot.style.cursor = 'pointer';
-        slot.onclick = () => replacePhoto(slot, panel, idx);
+        slot.onclick = () => replacePhoto(key, panel);
       } else {
         slot.style.cursor = 'zoom-in';
-        slot.onclick = () => openImgLightbox(appData.photos[key]);
+        slot.onclick = () => openImgLightbox(src);
       }
       grid.appendChild(slot);
     });
@@ -1918,47 +1957,31 @@ window.addPhotoSlot = function(panel) {
   input.onchange = async (e) => {
     for (const file of e.target.files) {
       await new Promise(resolve => {
-        compressImage(file, 1200, 900, 0.75, async (src) => {
-          if (!appData.photos) appData.photos = {};
-          const existing = Object.keys(appData.photos).filter(k => k.startsWith(panel + '_'));
-          appData.photos[`${panel}_${existing.length}`] = src;
+        compressImage(file, 1200, 900, 0.72, async (src) => {
+          const existing = getPanelPhotos(panel);
+          const nextIdx = existing.length;
+          await savePhoto(`${panel}_${nextIdx}`, src);
           resolve();
         });
       });
     }
-    await saveData();
     renderPhotoGrids();
   };
   input.click();
 }
 
-function replacePhoto(slot, panel, idx) {
+function replacePhoto(key, panel) {
   const input = document.createElement('input');
   input.type = 'file'; input.accept = 'image/*';
   input.onchange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    compressImage(file, 1200, 900, 0.75, async (src) => {
-      appData.photos[`${panel}_${idx}`] = src;
-      await saveData();
+    compressImage(file, 1200, 900, 0.72, async (src) => {
+      await savePhoto(key, src);
       renderPhotoGrids();
     });
   };
   input.click();
-}
-
-async function removePhoto(panel, idx) {
-  delete appData.photos[`${panel}_${idx}`];
-  // Re-index
-  const remaining = Object.keys(appData.photos)
-    .filter(k => k.startsWith(panel + '_'))
-    .sort((a,b) => parseInt(a.split('_')[1]) - parseInt(b.split('_')[1]));
-  const newPhotos = {};
-  remaining.forEach((key, i) => { newPhotos[`${panel}_${i}`] = appData.photos[key] || appData.photos[`${panel}_${parseInt(key.split('_')[1])}`]; });
-  Object.keys(appData.photos).filter(k => !k.startsWith(panel + '_')).forEach(k => { newPhotos[k] = appData.photos[k]; });
-  appData.photos = newPhotos;
-  await saveData();
-  renderPhotoGrids();
 }
 
 // ─── COZ IMAGES ───
@@ -1968,10 +1991,8 @@ function uploadCozImg(key) {
   input.onchange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    compressImage(file, 1200, 900, 0.75, async (src) => {
-      if (!appData.coz_imgs) appData.coz_imgs = {};
-      appData.coz_imgs[key] = src;
-      await saveData();
+    compressImage(file, 1200, 900, 0.72, async (src) => {
+      await savePhoto(`coz_${key}`, src);
       applyCozImgs();
     });
   };
@@ -1980,10 +2001,11 @@ function uploadCozImg(key) {
 
 function applyCozImgs() {
   ['coz-antes', 'coz-agora'].forEach(key => {
-    if (appData.coz_imgs && appData.coz_imgs[key]) {
+    const src = fotosCache[`coz_${key}`];
+    if (src) {
       const thumb = document.getElementById(key + '-thumb');
       const img = document.getElementById(key + '-img');
-      if (thumb && img) { img.src = appData.coz_imgs[key]; thumb.style.display = 'block'; }
+      if (thumb && img) { img.src = src; thumb.style.display = 'block'; }
     }
   });
 }
@@ -2036,11 +2058,12 @@ function renderEvolucao() {
   if (!grid) return;
   grid.innerHTML = '';
   items.forEach((item, i) => {
+    const src = fotosCache[`evolucao_${i}`] || item.src || '';
     const card = document.createElement('div');
     card.className = 'evolucao-card';
     card.innerHTML = `
-      <div class="evolucao-img" style="position:relative;${item.src && !adminMode ? 'cursor:zoom-in;' : ''}">
-        ${item.src ? `<img src="${item.src}" style="width:100%;height:100%;object-fit:cover;" ${!adminMode ? `onclick="openImgLightbox('${item.src}')"` : ''}>` : `<div class="evolucao-img-placeholder">${adminMode ? 'Clica para adicionar foto' : 'Foto a adicionar'}</div>`}
+      <div class="evolucao-img" style="position:relative;${src && !adminMode ? 'cursor:zoom-in;' : ''}">
+        ${src ? `<img src="${src}" style="width:100%;height:100%;object-fit:cover;" ${!adminMode ? `onclick="openImgLightbox('${src}')"` : ''}>` : `<div class="evolucao-img-placeholder">${adminMode ? 'Clica para adicionar foto' : 'Foto a adicionar'}</div>`}
         ${adminMode ? `<button onclick="uploadEvolucaoImg(${i})" style="position:absolute;inset:0;width:100%;height:100%;background:rgba(0,0,0,0.4);border:none;color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:0.1em;">📷 Substituir foto</button>` : ''}
       </div>
       <div class="evolucao-meta">
@@ -2061,9 +2084,10 @@ window.uploadEvolucaoImg = function(idx) {
   input.onchange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    compressImage(file, 1200, 900, 0.75, async (src) => {
+    compressImage(file, 1200, 900, 0.72, async (src) => {
+      await savePhoto(`evolucao_${idx}`, src);
       if (!appData.evolucao || !appData.evolucao.length) appData.evolucao = [...DEFAULT_EVOLUCAO];
-      appData.evolucao[idx].src = src;
+      appData.evolucao[idx].hasFoto = true;
       await saveData();
       renderEvolucao();
     });
