@@ -1243,10 +1243,7 @@ footer {
     <div class="mat-mini" style="margin-top:24px;" id="mat-cozinha-container">
       <div class="mat-mini-header">
         <span>Material · Cozinha</span>
-        <div style="display:flex;gap:8px;align-items:center;">
-          <span id="mat-cozinha-total" style="color:var(--gold-light)">4.483,26 €</span>
-          <button id="mat-cozinha-add-btn" onclick="addMaterialItem('cozinha')" style="display:none;background:none;border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;cursor:pointer;">+ Artigo</button>
-        </div>
+        <button id="mat-cozinha-add-btn" onclick="addMaterialItem('cozinha')" style="display:none;background:none;border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;cursor:pointer;">+ Artigo</button>
       </div>
       <div id="mat-cozinha-items"><!-- dynamic --></div>
     </div>
@@ -1285,30 +1282,10 @@ footer {
     <div id="add-photo-btn-casabanho" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('casabanho')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
-    <div class="mat-mini" style="margin-top:24px;">
-      <div class="mat-mini-header">
-        <span>Material · Casa de Banho</span>
-        <span style="color:var(--gold-light)">2.979,76 €</span>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Móvel Armário CH Zeus/Play 40×32×180 2G2P Branco</span>
-        <a id="link-cb-1" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Móvel Cesto CH Zeus/Play 40×32×180 Branco</span>
-        <a id="link-cb-2" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
-      <div class="mat-mini-row">
-        <span class="mat-mini-name">Móvel Casa de Banho Luca 80×45×84 2G/1P Branco</span>
-        <a id="link-cb-3" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
-      </div>
     <div class="mat-mini" style="margin-top:24px;" id="mat-casabanho-container">
       <div class="mat-mini-header">
         <span>Material · Casa de Banho</span>
-        <div style="display:flex;gap:8px;align-items:center;">
-          <span id="mat-casabanho-total" style="color:var(--gold-light)">2.979,76 €</span>
-          <button id="mat-casabanho-add-btn" onclick="addMaterialItem('casabanho')" style="display:none;background:none;border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;cursor:pointer;">+ Artigo</button>
-        </div>
+        <button id="mat-casabanho-add-btn" onclick="addMaterialItem('casabanho')" style="display:none;background:none;border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;cursor:pointer;">+ Artigo</button>
       </div>
       <div id="mat-casabanho-items"><!-- dynamic --></div>
     </div>
@@ -2344,10 +2321,10 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 </div>
 
 <!-- ADMIN BUTTON -->
-<button id="admin-btn" onclick="toggleAdmin()" style="position:fixed;bottom:24px;right:24px;z-index:200;background:var(--bg2);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;padding:10px 16px;cursor:pointer;">⚙ Admin</button>
+<button id="admin-btn" onclick="toggleAdmin()" style="position:fixed;bottom:24px;right:24px;z-index:300;background:var(--bg2);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;padding:10px 16px;cursor:pointer;">⚙ Admin</button>
 
 <!-- ADMIN PANEL -->
-<div id="admin-panel" style="display:none;position:fixed;bottom:70px;right:24px;z-index:200;background:var(--bg2);border:1px solid var(--gold);padding:20px;width:300px;max-height:70vh;overflow-y:auto;">
+<div id="admin-panel" style="display:none;position:fixed;top:80px;right:0;z-index:200;background:var(--bg2);border-left:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:20px;width:280px;max-height:calc(100vh - 80px);overflow-y:auto;box-shadow:-4px 4px 20px rgba(0,0,0,0.5);">
   <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Modo Administrador</div>
   <div style="font-size:11px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;">
     · Clica nas fotos para substituir<br>
