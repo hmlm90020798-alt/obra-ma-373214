@@ -2309,7 +2309,7 @@ function enterAdmin() {
   renderFinanceiro();
 }
 
-function exitAdmin() {
+window.exitAdmin = function exitAdmin() {
   adminMode = false;
   document.getElementById('admin-btn').textContent = '⚙ Admin';
   document.getElementById('admin-btn').style.color = '';
