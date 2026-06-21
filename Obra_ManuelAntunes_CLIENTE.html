@@ -1303,18 +1303,16 @@ footer {
       </div>
       <div class="comp-col agora">
         <div class="comp-col-label">Elemento Novo · 2026</div>
-        <div class="comp-col-value" style="color:var(--amber)">A definir</div>
-        <div class="comp-col-desc">Valor e configuração a definir com o cliente.</div>
+        <div id="quarto-valor" class="comp-col-value" style="color:var(--gold-light)">—</div>
+        <div class="comp-col-desc">Móvel de quarto — novo elemento adicionado ao projeto.</div>
       </div>
       <div class="comp-diff">
         <span class="comp-diff-label">Novo elemento</span>
-        <span class="comp-diff-value" style="color:var(--amber)">A definir</span>
+        <span id="quarto-diff" class="comp-diff-value new-item">—</span>
       </div>
     </div>
 
-    <div class="photo-grid" id="photos-quarto">
-      <!-- dynamic -->
-    </div>
+    <div class="photo-grid" id="photos-quarto"><!-- dynamic --></div>
     <div id="add-photo-btn-quarto" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('quarto')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
@@ -2134,6 +2132,17 @@ function renderFinanceiro() {
   if (totalEl) totalEl.textContent = formatEur(total);
   if (diffEl) diffEl.textContent = `+${formatEur(diff)} face ao adjudicado`;
   if (faltaEl) faltaEl.textContent = formatEur(falta);
+
+  // Update quarto comp block
+  const quartoLinha = linhas.find(l => l.label && l.label.toLowerCase().includes('quarto'));
+  const quartoValEl = document.getElementById('quarto-valor');
+  const quartoDiffEl = document.getElementById('quarto-diff');
+  if (quartoLinha && quartoValEl) {
+    const v = parseFloat(quartoLinha.valor) || 0;
+    quartoValEl.textContent = v > 0 ? formatEur(v) : 'A definir';
+    quartoValEl.style.color = v > 0 ? 'var(--gold-light)' : 'var(--amber)';
+    if (quartoDiffEl) { quartoDiffEl.textContent = v > 0 ? formatEur(v) : 'A definir'; }
+  }
 }
 
 window.saveFinLinha = async function(i, field, value) {
@@ -2284,6 +2293,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
   <img id="lightbox-img" src="" style="max-width:90vw;max-height:90vh;object-fit:contain;box-shadow:0 0 60px rgba(0,0,0,0.8);">
   <div style="position:absolute;top:20px;right:24px;color:var(--text-dim);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;">ESC / clica para fechar</div>
 </div>
+
 
 
 

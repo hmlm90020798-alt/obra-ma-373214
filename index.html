@@ -1303,18 +1303,16 @@ footer {
       </div>
       <div class="comp-col agora">
         <div class="comp-col-label">Elemento Novo · 2026</div>
-        <div class="comp-col-value" style="color:var(--amber)">A definir</div>
-        <div class="comp-col-desc">Valor e configuração a definir com o cliente.</div>
+        <div id="quarto-valor" class="comp-col-value" style="color:var(--gold-light)">—</div>
+        <div class="comp-col-desc">Móvel de quarto — novo elemento adicionado ao projeto.</div>
       </div>
       <div class="comp-diff">
         <span class="comp-diff-label">Novo elemento</span>
-        <span class="comp-diff-value" style="color:var(--amber)">A definir</span>
+        <span id="quarto-diff" class="comp-diff-value new-item">—</span>
       </div>
     </div>
 
-    <div class="photo-grid" id="photos-quarto">
-      <!-- dynamic -->
-    </div>
+    <div class="photo-grid" id="photos-quarto"><!-- dynamic --></div>
     <div id="add-photo-btn-quarto" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('quarto')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
@@ -2146,6 +2144,17 @@ function renderFinanceiro() {
   if (totalEl) totalEl.textContent = formatEur(total);
   if (diffEl) diffEl.textContent = `+${formatEur(diff)} face ao adjudicado`;
   if (faltaEl) faltaEl.textContent = formatEur(falta);
+
+  // Update quarto comp block
+  const quartoLinha = linhas.find(l => l.label && l.label.toLowerCase().includes('quarto'));
+  const quartoValEl = document.getElementById('quarto-valor');
+  const quartoDiffEl = document.getElementById('quarto-diff');
+  if (quartoLinha && quartoValEl) {
+    const v = parseFloat(quartoLinha.valor) || 0;
+    quartoValEl.textContent = v > 0 ? formatEur(v) : 'A definir';
+    quartoValEl.style.color = v > 0 ? 'var(--gold-light)' : 'var(--amber)';
+    if (quartoDiffEl) { quartoDiffEl.textContent = v > 0 ? formatEur(v) : 'A definir'; }
+  }
 }
 
 window.saveFinLinha = async function(i, field, value) {
@@ -2278,10 +2287,11 @@ window.toggleAdmin = function() {
 
 function enterAdmin() {
   adminMode = true;
-  document.getElementById('admin-btn').textContent = '✕ Sair do Admin';
-  document.getElementById('admin-btn').style.color = 'var(--red)';
-  document.getElementById('admin-btn').style.borderColor = 'var(--red)';
+  document.getElementById('admin-btn').textContent = '⚙ Admin';
+  document.getElementById('admin-btn').style.color = 'var(--gold)';
+  document.getElementById('admin-btn').style.borderColor = 'var(--gold)';
   document.getElementById('admin-panel').style.display = 'block';
+  document.getElementById('admin-overlay').style.display = 'block';
   document.querySelectorAll('[data-editable]').forEach(el => {
     el.contentEditable = 'true';
     el.style.border = '1px dashed var(--gold)';
@@ -2305,6 +2315,7 @@ function exitAdmin() {
   document.getElementById('admin-btn').style.color = '';
   document.getElementById('admin-btn').style.borderColor = '';
   document.getElementById('admin-panel').style.display = 'none';
+  document.getElementById('admin-overlay').style.display = 'none';
   document.querySelectorAll('[data-editable]').forEach(el => {
     el.contentEditable = 'false';
     el.style.border = '';
@@ -2359,9 +2370,15 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 <!-- ADMIN BUTTON -->
 <button id="admin-btn" onclick="toggleAdmin()" style="position:fixed;bottom:24px;right:24px;z-index:300;background:var(--bg2);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;padding:10px 16px;cursor:pointer;">⚙ Admin</button>
 
-<!-- ADMIN PANEL -->
-<div id="admin-panel" style="display:none;position:fixed;top:80px;right:0;z-index:200;background:var(--bg2);border-left:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:20px;width:280px;max-height:calc(100vh - 80px);overflow-y:auto;box-shadow:-4px 4px 20px rgba(0,0,0,0.5);">
-  <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Modo Administrador</div>
+<!-- ADMIN OVERLAY -->
+<div id="admin-overlay" onclick="exitAdmin()" style="display:none;position:fixed;inset:0;z-index:250;background:rgba(0,0,0,0.5);"></div>
+
+<!-- ADMIN DRAWER -->
+<div id="admin-panel" style="display:none;position:fixed;top:0;right:0;bottom:0;z-index:260;background:var(--bg2);border-left:1px solid var(--gold);padding:24px 20px;width:290px;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,0.7);">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Modo Administrador</div>
+    <button onclick="exitAdmin()" style="background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:18px;line-height:1;">×</button>
+  </div>
   <div style="font-size:11px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;">
     · Clica nas fotos para substituir<br>
     · Clica nos textos com borda dourada para editar<br>
