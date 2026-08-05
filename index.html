@@ -2069,19 +2069,7 @@ const FIN_DEFAULT = [
   { label: 'Móvel de Quarto', valor: 1592.60, nota: 'novo elemento', cor: 'blue' },
   { label: 'Material de Obra', valor: 5496.37, nota: 'dedução de 502,81 € por material de iluminação anulado', cor: 'green' },
 ];
-
-// Conciliação financeira validada para partilha com o cliente.
-// Também normaliza dados antigos já existentes no Firestore.
-function conciliarFinanceiro(linhas) {
-  const base = (linhas && linhas.length) ? linhas : FIN_DEFAULT;
-  return base.map(linha => {
-    const label = (linha.label || '').toLowerCase();
-    if (label === 'mão de obra') return { ...linha, valor: 14883.87, nota: 'inclui 1.660,24 € de material aplicado partilhado pelo técnico', cor: 'amber' };
-    if (label === 'material de obra') return { ...linha, valor: 5496.37, nota: 'dedução de 502,81 € por material de iluminação anulado', cor: 'green' };
-    if (label === 'cozinha') return { ...linha, valor: 4483.26, nota: '+225,87 € face ao adjudicado' };
-    return linha;
-  });
-}
+const FIN_VERSION = 2;
 const PAGO = 13387.00;
 const ADJ = 26774.00;
 
@@ -2090,7 +2078,7 @@ function formatEur(val) {
 }
 
 function renderFinanceiro() {
-  const linhas = conciliarFinanceiro((appData.financeiro && appData.financeiro.length) ? appData.financeiro : FIN_DEFAULT);
+  const linhas = (appData.financeiro && appData.financeiro.length) ? appData.financeiro : FIN_DEFAULT;
   const container = document.getElementById('fin-linhas');
   if (!container) return;
 
@@ -2367,6 +2355,12 @@ function applyData() {
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', async () => {
   await loadData();
+  // Migração única: publica a conciliação validada no Firestore.
+  if (appData.financeiroVersion !== FIN_VERSION) {
+    appData.financeiro = FIN_DEFAULT.map(linha => ({ ...linha }));
+    appData.financeiroVersion = FIN_VERSION;
+    await saveData();
+  }
   applyData();
   startRealtimeSync();
 });
