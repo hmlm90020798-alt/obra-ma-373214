@@ -10,18 +10,18 @@
   --gold: #C4A96A;
   --gold-light: #D4BC8A;
   --gold-dim: rgba(196,169,106,0.15);
-  --gold-border: rgba(196,169,106,0.35);
+  --gold-border: rgba(196,169,106,0.25);
   --bg: #0D0D0D;
-  --bg2: #161616;
-  --bg3: #1E1E1E;
-  --bg4: #262626;
-  --text: #F0EAE0;
-  --text-dim: #A89F94;
-  --text-mid: #D0C8BC;
-  --red: #D96A6A;
-  --green: #7ABF8A;
-  --blue: #6A9AD4;
-  --amber: #D4A86A;
+  --bg2: #141414;
+  --bg3: #1A1A1A;
+  --bg4: #222222;
+  --text: #E8E0D0;
+  --text-dim: #8A8070;
+  --text-mid: #B8AFA0;
+  --red: #C45A5A;
+  --green: #6AAA7A;
+  --blue: #5A8AC4;
+  --amber: #C49A5A;
   --radius: 4px;
   --radius-lg: 8px;
 }
@@ -34,10 +34,9 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.7;
+  font-weight: 300;
+  line-height: 1.6;
   min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
 }
 
 /* ─── HEADER ─── */
@@ -286,15 +285,15 @@ main {
 }
 
 .fin-row-label {
-  font-size: 13px;
-  color: var(--text-mid);
+  font-size: 12px;
+  color: var(--text-dim);
   flex: 1;
 }
 
 .fin-row-value {
   font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  color: var(--text);
+  font-size: 12px;
+  color: var(--text-mid);
   white-space: nowrap;
 }
 
@@ -461,8 +460,8 @@ main {
 }
 
 .obra-panel-desc {
-  font-size: 14px;
-  color: var(--text-mid);
+  font-size: 13px;
+  color: var(--text-dim);
   max-width: 600px;
   line-height: 1.7;
 }
@@ -542,10 +541,10 @@ main {
 }
 
 .mat-mini-name {
-  font-size: 13px;
-  color: var(--text-mid);
+  font-size: 11px;
+  color: var(--text-dim);
   flex: 1;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Mono', monospace;
 }
 
 .mat-mini-status {
@@ -554,8 +553,8 @@ main {
 
 .mat-mini-val {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  color: var(--text);
+  font-size: 11px;
+  color: var(--text-mid);
   white-space: nowrap;
 }
 
@@ -624,15 +623,15 @@ main {
 }
 
 .cal-phase {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text);
   font-weight: 500;
   margin-bottom: 4px;
 }
 
 .cal-desc {
-  font-size: 13px;
-  color: var(--text-mid);
+  font-size: 12px;
+  color: var(--text-dim);
   line-height: 1.6;
 }
 
@@ -676,15 +675,15 @@ main {
 }
 
 .trabalho-title {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text);
   margin-bottom: 3px;
   font-weight: 500;
 }
 
 .trabalho-desc {
-  font-size: 13px;
-  color: var(--text-mid);
+  font-size: 11px;
+  color: var(--text-dim);
   line-height: 1.6;
 }
 
@@ -734,15 +733,15 @@ main {
 
 .evolucao-date {
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 0.15em;
   color: var(--gold);
   margin-bottom: 4px;
 }
 
 .evolucao-caption {
-  font-size: 13px;
-  color: var(--text-mid);
+  font-size: 12px;
+  color: var(--text-dim);
   line-height: 1.5;
 }
 
@@ -794,7 +793,7 @@ main {
 }
 
 .nota-texto {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-mid);
   line-height: 1.7;
 }
@@ -1012,12 +1011,6 @@ footer {
   </div>
 </section>
 
-<!-- INFO BANNER -->
-<div style="background:rgba(196,169,106,0.06);border-top:1px solid var(--gold-border);border-bottom:1px solid var(--gold-border);padding:14px 40px;display:flex;align-items:center;gap:16px;">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-  <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-dim);line-height:1.6;">Este documento está em atualização. Algumas informações, nomeadamente as relativas a alterações entretanto propostas e à calendarização, encontram-se ainda dependentes de confirmação com o técnico responsável, Sr. Domingos. Será notificado à medida que a informação for sendo consolidada.</span>
-</div>
-
 <main>
 
 <!-- ─── 1. FINANCEIRO ─── -->
@@ -1031,58 +1024,137 @@ footer {
   <!-- ANTES / DEPOIS VISUAL -->
   <div style="display:grid;grid-template-columns:1fr 40px 1fr;gap:0;margin-bottom:24px;align-items:stretch;">
 
-    <!-- COLUNA ANTES (estática - adjudicado não muda) -->
+    <!-- COLUNA ANTES -->
     <div style="background:var(--bg3);border:1px solid rgba(255,255,255,0.06);padding:28px 28px 24px;">
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-dim);margin-bottom:20px;">Outubro 2025 · Adjudicado</div>
+
       <div style="margin-bottom:14px;">
         <div style="font-size:11px;color:var(--text-dim);margin-bottom:3px;">Mão de Obra</div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:49.4%;height:100%;background:var(--text-dim);border-radius:2px;"></div></div>
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+            <div style="width:49.4%;height:100%;background:var(--text-dim);border-radius:2px;"></div>
+          </div>
           <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-mid);white-space:nowrap;">13.223,63 €</span>
         </div>
       </div>
+
       <div style="margin-bottom:14px;">
         <div style="font-size:11px;color:var(--text-dim);margin-bottom:3px;">Cozinha</div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:15.9%;height:100%;background:var(--text-dim);border-radius:2px;"></div></div>
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+            <div style="width:15.9%;height:100%;background:var(--text-dim);border-radius:2px;"></div>
+          </div>
           <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-mid);white-space:nowrap;">4.257,39 €</span>
         </div>
       </div>
+
       <div style="margin-bottom:14px;">
         <div style="font-size:11px;color:var(--text-dim);margin-bottom:3px;">Casa de Banho & Roupeiros</div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:12.3%;height:100%;background:var(--text-dim);border-radius:2px;"></div></div>
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+            <div style="width:12.3%;height:100%;background:var(--text-dim);border-radius:2px;"></div>
+          </div>
           <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-mid);white-space:nowrap;">3.293,80 €</span>
         </div>
       </div>
+
       <div style="margin-bottom:14px;">
         <div style="font-size:11px;color:var(--text-dim);margin-bottom:3px;">Material de Obra</div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:22.4%;height:100%;background:var(--text-dim);border-radius:2px;"></div></div>
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+            <div style="width:22.4%;height:100%;background:var(--text-dim);border-radius:2px;"></div>
+          </div>
           <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-mid);white-space:nowrap;">5.999,18 €</span>
         </div>
       </div>
+
       <div style="border-top:1px solid rgba(255,255,255,0.06);margin-top:20px;padding-top:16px;display:flex;justify-content:space-between;align-items:baseline;">
         <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);">Total</span>
         <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--text-mid);">26.774,00 €</span>
       </div>
     </div>
 
-    <!-- SETA -->
+    <!-- SETA CENTRAL -->
     <div style="display:flex;align-items:center;justify-content:center;background:var(--bg2);">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </div>
 
-    <!-- COLUNA DEPOIS (dinâmica - Firebase) -->
-    <div style="background:linear-gradient(135deg,#1a1608 0%,#1c1a0e 100%);border:1px solid var(--gold);padding:28px 28px 24px;box-shadow:0 0 40px rgba(196,169,106,0.08);">
+    <!-- COLUNA DEPOIS -->
+    <div style="background:var(--bg2);border:1px solid var(--gold-border);padding:28px 28px 24px;">
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Junho 2026 · Atualizado</div>
-      <div id="fin-linhas"><!-- renderizado pelo JS --></div>
-      <div style="border-top:1px solid var(--gold);margin-top:20px;padding-top:16px;display:flex;justify-content:space-between;align-items:baseline;">
+
+      <div style="margin-bottom:18px;">
+        <div style="font-size:11px;color:var(--text-mid);margin-bottom:4px;">Mão de Obra</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+            <div style="width:48.2%;height:100%;background:rgba(200,200,200,0.4);border-radius:2px;"></div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;">13.223,63 €</span>
+        </div>
+        <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--text-dim);">sem alteração</div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <div style="font-size:11px;color:var(--text-mid);margin-bottom:4px;">Cozinha</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+            <div style="width:16.3%;height:100%;background:var(--gold);border-radius:2px;"></div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;">4.483,26 €</span>
+        </div>
+        <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);">+225,87 € face ao adjudicado</div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <div style="font-size:11px;color:var(--text-mid);margin-bottom:4px;">Casa de Banho & Roupeiros</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+            <div style="width:10.9%;height:100%;background:var(--green);border-radius:2px;"></div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;">2.979,76 €</span>
+        </div>
+        <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--green);">−314,04 € face ao adjudicado</div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <div style="font-size:11px;color:var(--text-mid);margin-bottom:4px;">Móvel Hall de Entrada</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+            <div style="width:2.7%;height:100%;background:var(--blue);border-radius:2px;"></div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;">728,56 €</span>
+        </div>
+        <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--blue);">novo elemento</div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <div style="font-size:11px;color:var(--text-mid);margin-bottom:4px;">Móvel de Quarto</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+            <div style="width:0%;height:100%;background:var(--amber);border-radius:2px;"></div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);white-space:nowrap;">A definir</span>
+        </div>
+        <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);">novo elemento</div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <div style="font-size:11px;color:var(--text-mid);margin-bottom:4px;">Material de Obra</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+            <div style="width:21.9%;height:100%;background:rgba(200,200,200,0.4);border-radius:2px;"></div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;">5.999,18 €</span>
+        </div>
+        <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--red);">+ iluminação LED a orçamentar</div>
+      </div>
+
+      <div style="border-top:1px solid var(--gold-border);margin-top:20px;padding-top:16px;display:flex;justify-content:space-between;align-items:baseline;">
         <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);">Total confirmado</span>
-        <span id="fin-total" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold-light);">—</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold-light);">27.414,39 €</span>
       </div>
       <div style="text-align:right;margin-top:4px;">
-        <span id="fin-diff" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);"></span>
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);">+640,39 € face ao adjudicado</span>
       </div>
     </div>
   </div>
@@ -1103,13 +1175,13 @@ footer {
       <span class="fin-row-value pending">A solicitar</span>
     </div>
     <div class="fin-row total-row">
-      <span class="fin-row-label">Valor em falta</span>
-      <span id="fin-falta" class="fin-row-value alert">—</span>
+      <span class="fin-row-label">Valor em falta (excl. pendentes)</span>
+      <span class="fin-row-value alert">14.027,39 €</span>
     </div>
   </div>
 
   <div class="note-box">
-    <strong>Conciliação:</strong> A mão de obra inclui 1.660,24 € relativos à relação apresentada pelo técnico. Ao material de obra foi deduzido o montante de 502,81 € referente a material de iluminação anulado. Os pagamentos de 40% e 10% serão calculados sobre o valor total atualizado. &nbsp;·&nbsp; <strong>IVA de mão de obra à taxa reduzida de 6%</strong> (habitação própria permanente).
+    <strong>Pendentes:</strong> O valor final incorporará ainda a iluminação LED (a orçamentar com o técnico) e o móvel de quarto (a definir). Os pagamentos de 40% e 10% serão calculados sobre o valor total confirmado. &nbsp;·&nbsp; <strong>IVA de mão de obra à taxa reduzida de 6%</strong> (habitação própria permanente).
   </div>
 </section>
 
@@ -1141,7 +1213,7 @@ footer {
     <div class="comp-block">
       <div class="comp-col antes" id="coz-antes-col" onclick="openLightbox('coz-antes')" style="cursor:pointer;position:relative;" title="Clica para ver imagem">
         <div class="comp-col-label">Projeto Inicial · Out 2025</div>
-        <div class="comp-col-value">4.257,39 €</div>
+        <div class="comp-col-value">4.038,39 €</div>
         <div class="comp-col-desc">Cozinha original — layout na parede inicial, sem relocação.</div>
         <div id="coz-antes-thumb" style="margin-top:10px;display:none;"><img id="coz-antes-img" src="" style="width:100%;height:80px;object-fit:cover;opacity:0.7;"></div>
         <div style="position:absolute;bottom:8px;right:10px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--text-dim);opacity:0.5;">ver imagem →</div>
@@ -1155,7 +1227,7 @@ footer {
       </div>
       <div class="comp-diff">
         <span class="comp-diff-label">Diferença face ao projeto inicial</span>
-        <span class="comp-diff-value positive">+225,87 €</span>
+        <span class="comp-diff-value positive">+444,87 €</span>
       </div>
     </div>
 
@@ -1165,12 +1237,39 @@ footer {
     <div id="add-photo-btn-cozinha" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('cozinha')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
-    <div class="mat-mini" style="margin-top:24px;" id="mat-cozinha-container">
+    <div class="mat-mini" style="margin-top:24px;">
       <div class="mat-mini-header">
         <span>Material · Cozinha</span>
-        <button id="mat-cozinha-add-btn" onclick="addMaterialItem('cozinha')" style="display:none;background:none;border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;cursor:pointer;">+ Artigo</button>
+        <span style="color:var(--gold-light)">4.483,26 €</span>
       </div>
-      <div id="mat-cozinha-items"><!-- dynamic --></div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Microondas Grill 60 MC 20 Inox Cata</span>
+        <a id="link-coz-1" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Exaustor Ocultável AEG DGE5661HM 700m³ Inox</span>
+        <a id="link-coz-2" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Tampo Bancada Fenólico Mármora PT 300×63×1,2cm</span>
+        <a id="link-coz-3" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Lava-Louças 1 Cuba Sup. Delinia Loft 45×51.5 Inox</span>
+        <a id="link-coz-4" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Forno Multifunções Cata MDS 6106 X VR01</span>
+        <a id="link-coz-5" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Placa Indução Cata IB 6324E2 BK</span>
+        <a id="link-coz-6" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Revestimento PVC Twilight Inspiro 75×45cm</span>
+        <a id="link-coz-7" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
     </div>
   </div>
   </div>
@@ -1207,12 +1306,35 @@ footer {
     <div id="add-photo-btn-casabanho" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('casabanho')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
-    <div class="mat-mini" style="margin-top:24px;" id="mat-casabanho-container">
+    <div class="mat-mini" style="margin-top:24px;">
       <div class="mat-mini-header">
         <span>Material · Casa de Banho</span>
-        <button id="mat-casabanho-add-btn" onclick="addMaterialItem('casabanho')" style="display:none;background:none;border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;cursor:pointer;">+ Artigo</button>
+        <span style="color:var(--gold-light)">2.979,76 €</span>
       </div>
-      <div id="mat-casabanho-items"><!-- dynamic --></div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Móvel Armário CH Zeus/Play 40×32×180 2G2P Branco</span>
+        <a id="link-cb-1" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Móvel Cesto CH Zeus/Play 40×32×180 Branco</span>
+        <a id="link-cb-2" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Móvel Casa de Banho Luca 80×45×84 2G/1P Branco</span>
+        <a id="link-cb-3" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Lavatório Lupi 81×46 Centro BR BLH Gelcoat</span>
+        <a id="link-cb-4" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Revestimento PVC Shine Inspiro 75×45cm</span>
+        <a id="link-cb-5" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
+      <div class="mat-mini-row">
+        <span class="mat-mini-name">Espelho Push 80×80 Bluetooth / Altifalante c/ Luz</span>
+        <a id="link-cb-6" href="#" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;margin-left:auto;">ver produto →</a>
+      </div>
     </div>
   </div>
   </div>
@@ -1303,16 +1425,18 @@ footer {
       </div>
       <div class="comp-col agora">
         <div class="comp-col-label">Elemento Novo · 2026</div>
-        <div id="quarto-valor" class="comp-col-value" style="color:var(--gold-light)">—</div>
-        <div class="comp-col-desc">Móvel de quarto — novo elemento adicionado ao projeto.</div>
+        <div class="comp-col-value" style="color:var(--amber)">A definir</div>
+        <div class="comp-col-desc">Valor e configuração a definir com o cliente.</div>
       </div>
       <div class="comp-diff">
         <span class="comp-diff-label">Novo elemento</span>
-        <span id="quarto-diff" class="comp-diff-value new-item">—</span>
+        <span class="comp-diff-value" style="color:var(--amber)">A definir</span>
       </div>
     </div>
 
-    <div class="photo-grid" id="photos-quarto"><!-- dynamic --></div>
+    <div class="photo-grid" id="photos-quarto">
+      <!-- dynamic -->
+    </div>
     <div id="add-photo-btn-quarto" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('quarto')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
@@ -1360,8 +1484,8 @@ footer {
     <div class="trabalho-item">
       <div class="trabalho-dot" style="background:var(--amber)"></div>
       <div>
-        <div class="trabalho-title">5. Instalação de candeeiros / apliques / suspensão / fitas LED <span class="badge badge-green" style="margin-left:6px;vertical-align:middle;">Conciliado</span></div>
-        <div class="trabalho-desc">Instalação da iluminação do apartamento, incluindo iluminação LED perimetral e central embutida. Valores conciliados com a relação apresentada pelo técnico e com a anulação do material substituído.</div>
+        <div class="trabalho-title">5. Instalação de candeeiros / apliques / suspensão / fitas LED <span class="badge badge-amber" style="margin-left:6px;vertical-align:middle;">A Orçamentar</span></div>
+        <div class="trabalho-desc">Instalação de toda a iluminação do apartamento, incluindo LED RGB perimetral embutido nas sancas e LED central embutido. Orçamentação em curso com o técnico.</div>
       </div>
     </div>
     <div class="trabalho-item">
@@ -1606,7 +1730,7 @@ footer {
         <span class="nota-data">Jun 2026</span>
       </div>
       <div class="nota-texto">
-        A relação apresentada pelo técnico, no total de 1.660,24 €, foi integrada na rubrica de mão de obra. Ao material de obra foi deduzido o valor de 502,81 € correspondente ao material de iluminação anulado.
+        Orçamento da iluminação LED (RGB perimetral + LED central embutido) encontra-se em fase de levantamento com o Sr. Domingos. O valor será comunicado assim que confirmado e adicionado ao quadro financeiro.
       </div>
     </div>
 
@@ -1653,7 +1777,7 @@ footer {
 <script type="module">
 // ─── FIREBASE ───
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, doc, collection, getDoc, getDocs, setDoc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, getDoc, setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBGdz1_ceb0mPsG2wfbG2tvg5bsYPn7zJo",
@@ -1667,72 +1791,31 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const DOC_REF = doc(db, 'obra', '373214');
-const FOTOS_REF = collection(db, 'obra', '373214', 'fotos');
 
 // ─── STATE ───
 const ADMIN_PIN = '2404';
 let adminMode = false;
-let appData = { texts: {}, notes: [], evolucao: [], links: {}, material: {} };
-let fotosCache = {}; // key -> base64, stored in subcollection
+let appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {} };
 
 // ─── FIRESTORE SYNC ───
 async function loadData() {
   try {
-    // Load main doc (texts, notes, evolucao metadata, links, material)
     const snap = await getDoc(DOC_REF);
-    if (snap.exists()) {
-      const d = snap.data();
-      appData = { texts: {}, notes: [], evolucao: [], links: {}, material: {}, ...d };
-      // Strip any old photo data that might have snuck in
-      delete appData.photos;
-      delete appData.coz_imgs;
-    }
-    // Load photos subcollection
-    const fotosSnap = await getDocs(FOTOS_REF);
-    fotosCache = {};
-    fotosSnap.forEach(d => { fotosCache[d.id] = d.data().src; });
+    if (snap.exists()) appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {}, ...snap.data() };
   } catch(e) { console.warn('Firestore load error:', e); }
+  return appData;
 }
 
 async function saveData() {
-  try {
-    // Save main doc without photos
-    const toSave = { ...appData };
-    delete toSave.photos;
-    delete toSave.coz_imgs;
-    await setDoc(DOC_REF, toSave);
-  } catch(e) { console.error('Firestore save error:', e); alert('Erro ao guardar. Verifica a ligação.'); }
+  try { await setDoc(DOC_REF, appData); }
+  catch(e) { console.error('Firestore save error:', e); alert('Erro ao guardar. Verifica a ligação.'); }
 }
 
-async function savePhoto(key, src) {
-  try {
-    await setDoc(doc(FOTOS_REF, key), { src });
-    fotosCache[key] = src;
-  } catch(e) { console.error('Photo save error:', e); alert('Erro ao guardar foto.'); }
-}
-
-async function deletePhoto(key) {
-  try {
-    await deleteDoc(doc(FOTOS_REF, key));
-    delete fotosCache[key];
-  } catch(e) { console.error('Photo delete error:', e); }
-}
-
-// Helper — get photos for a panel from cache
-function getPanelPhotos(panel) {
-  return Object.keys(fotosCache)
-    .filter(k => k.startsWith(panel + '_'))
-    .sort((a, b) => parseInt(a.split('_')[1]) - parseInt(b.split('_')[1]))
-    .map(k => ({ key: k, src: fotosCache[k] }));
-}
-
-// Listen for real-time updates on main doc
+// Listen for real-time updates
 function startRealtimeSync() {
   onSnapshot(DOC_REF, (snap) => {
     if (snap.exists() && !adminMode) {
-      const d = snap.data();
-      appData = { texts: {}, notes: [], evolucao: [], links: {}, material: {}, ...d };
-      delete appData.photos; delete appData.coz_imgs;
+      appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {}, ...snap.data() };
       applyData();
     }
   });
@@ -1787,7 +1870,7 @@ window.openImgLightbox = function(src) {
 }
 
 window.openLightbox = function(key) {
-  const src = fotosCache[`coz_${key}`];
+  const src = appData.coz_imgs && appData.coz_imgs[key];
   if (!src) {
     if (adminMode) { uploadCozImg(key); }
     else { alert('Imagem ainda não disponível.'); }
@@ -1807,7 +1890,9 @@ function renderPhotoGrids() {
   OBRA_PANELS.forEach(panel => {
     const grid = document.getElementById(`photos-${panel}`);
     if (!grid) return;
-    const panelPhotos = getPanelPhotos(panel);
+    const panelPhotos = Object.keys(appData.photos || {})
+      .filter(k => k.startsWith(panel + '_'))
+      .sort((a,b) => parseInt(a.split('_')[1]) - parseInt(b.split('_')[1]));
 
     grid.innerHTML = '';
 
@@ -1816,25 +1901,25 @@ function renderPhotoGrids() {
       return;
     }
 
-    panelPhotos.forEach(({key, src}) => {
+    panelPhotos.forEach(key => {
       const idx = key.split('_')[1];
       const slot = document.createElement('div');
       slot.className = 'photo-slot';
       slot.dataset.panel = panel;
       slot.dataset.index = idx;
       slot.style.position = 'relative';
-      slot.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">`;
+      slot.innerHTML = `<img src="${appData.photos[key]}" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">`;
       if (adminMode) {
         const rmBtn = document.createElement('button');
         rmBtn.textContent = '✕';
         rmBtn.style.cssText = 'position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.7);color:#fff;border:none;width:24px;height:24px;cursor:pointer;font-size:12px;z-index:10;';
-        rmBtn.onclick = async (e) => { e.stopPropagation(); await deletePhoto(key); renderPhotoGrids(); };
+        rmBtn.onclick = (e) => { e.stopPropagation(); removePhoto(panel, idx); };
         slot.appendChild(rmBtn);
         slot.style.cursor = 'pointer';
-        slot.onclick = () => replacePhoto(key, panel);
+        slot.onclick = () => replacePhoto(slot, panel, idx);
       } else {
         slot.style.cursor = 'zoom-in';
-        slot.onclick = () => openImgLightbox(src);
+        slot.onclick = () => openImgLightbox(appData.photos[key]);
       }
       grid.appendChild(slot);
     });
@@ -1857,31 +1942,47 @@ window.addPhotoSlot = function(panel) {
   input.onchange = async (e) => {
     for (const file of e.target.files) {
       await new Promise(resolve => {
-        compressImage(file, 1200, 900, 0.72, async (src) => {
-          const existing = getPanelPhotos(panel);
-          const nextIdx = existing.length;
-          await savePhoto(`${panel}_${nextIdx}`, src);
+        compressImage(file, 1200, 900, 0.75, async (src) => {
+          if (!appData.photos) appData.photos = {};
+          const existing = Object.keys(appData.photos).filter(k => k.startsWith(panel + '_'));
+          appData.photos[`${panel}_${existing.length}`] = src;
           resolve();
         });
       });
     }
+    await saveData();
     renderPhotoGrids();
   };
   input.click();
 }
 
-function replacePhoto(key, panel) {
+function replacePhoto(slot, panel, idx) {
   const input = document.createElement('input');
   input.type = 'file'; input.accept = 'image/*';
   input.onchange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    compressImage(file, 1200, 900, 0.72, async (src) => {
-      await savePhoto(key, src);
+    compressImage(file, 1200, 900, 0.75, async (src) => {
+      appData.photos[`${panel}_${idx}`] = src;
+      await saveData();
       renderPhotoGrids();
     });
   };
   input.click();
+}
+
+async function removePhoto(panel, idx) {
+  delete appData.photos[`${panel}_${idx}`];
+  // Re-index
+  const remaining = Object.keys(appData.photos)
+    .filter(k => k.startsWith(panel + '_'))
+    .sort((a,b) => parseInt(a.split('_')[1]) - parseInt(b.split('_')[1]));
+  const newPhotos = {};
+  remaining.forEach((key, i) => { newPhotos[`${panel}_${i}`] = appData.photos[key] || appData.photos[`${panel}_${parseInt(key.split('_')[1])}`]; });
+  Object.keys(appData.photos).filter(k => !k.startsWith(panel + '_')).forEach(k => { newPhotos[k] = appData.photos[k]; });
+  appData.photos = newPhotos;
+  await saveData();
+  renderPhotoGrids();
 }
 
 // ─── COZ IMAGES ───
@@ -1891,8 +1992,10 @@ function uploadCozImg(key) {
   input.onchange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    compressImage(file, 1200, 900, 0.72, async (src) => {
-      await savePhoto(`coz_${key}`, src);
+    compressImage(file, 1200, 900, 0.75, async (src) => {
+      if (!appData.coz_imgs) appData.coz_imgs = {};
+      appData.coz_imgs[key] = src;
+      await saveData();
       applyCozImgs();
     });
   };
@@ -1901,11 +2004,10 @@ function uploadCozImg(key) {
 
 function applyCozImgs() {
   ['coz-antes', 'coz-agora'].forEach(key => {
-    const src = fotosCache[`coz_${key}`];
-    if (src) {
+    if (appData.coz_imgs && appData.coz_imgs[key]) {
       const thumb = document.getElementById(key + '-thumb');
       const img = document.getElementById(key + '-img');
-      if (thumb && img) { img.src = src; thumb.style.display = 'block'; }
+      if (thumb && img) { img.src = appData.coz_imgs[key]; thumb.style.display = 'block'; }
     }
   });
 }
@@ -1958,12 +2060,11 @@ function renderEvolucao() {
   if (!grid) return;
   grid.innerHTML = '';
   items.forEach((item, i) => {
-    const src = fotosCache[`evolucao_${i}`] || item.src || '';
     const card = document.createElement('div');
     card.className = 'evolucao-card';
     card.innerHTML = `
-      <div class="evolucao-img" style="position:relative;${src && !adminMode ? 'cursor:zoom-in;' : ''}">
-        ${src ? `<img src="${src}" style="width:100%;height:100%;object-fit:cover;" ${!adminMode ? `onclick="openImgLightbox('${src}')"` : ''}>` : `<div class="evolucao-img-placeholder">${adminMode ? 'Clica para adicionar foto' : 'Foto a adicionar'}</div>`}
+      <div class="evolucao-img" style="position:relative;${item.src && !adminMode ? 'cursor:zoom-in;' : ''}">
+        ${item.src ? `<img src="${item.src}" style="width:100%;height:100%;object-fit:cover;" ${!adminMode ? `onclick="openImgLightbox('${item.src}')"` : ''}>` : `<div class="evolucao-img-placeholder">${adminMode ? 'Clica para adicionar foto' : 'Foto a adicionar'}</div>`}
         ${adminMode ? `<button onclick="uploadEvolucaoImg(${i})" style="position:absolute;inset:0;width:100%;height:100%;background:rgba(0,0,0,0.4);border:none;color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:0.1em;">📷 Substituir foto</button>` : ''}
       </div>
       <div class="evolucao-meta">
@@ -1984,10 +2085,9 @@ window.uploadEvolucaoImg = function(idx) {
   input.onchange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    compressImage(file, 1200, 900, 0.72, async (src) => {
-      await savePhoto(`evolucao_${idx}`, src);
+    compressImage(file, 1200, 900, 0.75, async (src) => {
       if (!appData.evolucao || !appData.evolucao.length) appData.evolucao = [...DEFAULT_EVOLUCAO];
-      appData.evolucao[idx].hasFoto = true;
+      appData.evolucao[idx].src = src;
       await saveData();
       renderEvolucao();
     });
@@ -2048,233 +2148,6 @@ window.removeNota = async function(idx) {
   renderNotes();
 }
 
-window.copyClientLink = function() {
-  const base = window.location.origin + window.location.pathname.replace('index.html', '');
-  const clientUrl = base + 'Obra_ManuelAntunes_CLIENTE.html';
-  navigator.clipboard.writeText(clientUrl).then(() => {
-    const fb = document.getElementById('copy-link-feedback');
-    fb.style.display = 'block';
-    setTimeout(() => { fb.style.display = 'none'; }, 3000);
-  }).catch(() => {
-    prompt('Copia este link:', clientUrl);
-  });
-}
-
-// ─── QUADRO FINANCEIRO DINÂMICO ───
-const FIN_DEFAULT = [
-  { label: 'Mão de Obra', valor: 14883.87, nota: 'inclui 1.660,24 € de material aplicado partilhado pelo técnico', cor: 'amber', link: '#trabalhos', linkLabel: 'ver trabalhos →' },
-  { label: 'Cozinha', valor: 4483.26, nota: '+225,87 € face ao adjudicado', cor: 'amber' },
-  { label: 'Casa de Banho & Roupeiros', valor: 2979.76, nota: '−314,04 € face ao adjudicado', cor: 'green' },
-  { label: 'Móvel Hall de Entrada', valor: 728.56, nota: 'novo elemento', cor: 'blue' },
-  { label: 'Móvel de Quarto', valor: 1592.60, nota: 'novo elemento', cor: 'blue' },
-  { label: 'Material de Obra', valor: 5496.37, nota: 'dedução de 502,81 € por material de iluminação anulado', cor: 'green' },
-];
-const FIN_VERSION = 2;
-const PAGO = 13387.00;
-const ADJ = 26774.00;
-
-function formatEur(val) {
-  return val.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
-}
-
-function renderFinanceiro() {
-  const linhas = (appData.financeiro && appData.financeiro.length) ? appData.financeiro : FIN_DEFAULT;
-  const container = document.getElementById('fin-linhas');
-  if (!container) return;
-
-  container.innerHTML = '';
-  let total = 0;
-
-  linhas.forEach((linha, i) => {
-    const val = parseFloat(linha.valor) || 0;
-    total += val;
-    const pct = Math.min((val / ADJ) * 100, 100).toFixed(1);
-    const corMap = { 'text-dim': 'rgba(200,200,200,0.4)', amber: 'var(--amber)', green: 'var(--green)', blue: 'var(--blue)', gold: 'var(--gold)' };
-    const barColor = corMap[linha.cor] || 'var(--gold)';
-    const notaColor = { 'text-dim': 'var(--text-dim)', amber: 'var(--amber)', green: 'var(--green)', blue: 'var(--blue)' }[linha.cor] || 'var(--text-dim)';
-
-    const div = document.createElement('div');
-    div.style.marginBottom = '18px';
-
-    if (adminMode) {
-      div.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;gap:8px;">
-          <input value="${linha.label}" onblur="saveFinLinha(${i},'label',this.value)" style="flex:1;background:none;border:none;border-bottom:1px dashed var(--gold-border);color:var(--text-mid);font-size:11px;outline:none;padding:2px 0;">
-          <input value="${val.toFixed(2)}" onblur="saveFinLinha(${i},'valor',this.value)" style="width:100px;background:var(--bg3);border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:11px;text-align:right;padding:2px 6px;outline:none;">
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;"><div style="width:${pct}%;height:100%;background:${barColor};border-radius:2px;"></div></div>
-        </div>
-        <div style="display:flex;justify-content:space-between;margin-top:3px;">
-          <input value="${linha.nota||''}" onblur="saveFinLinha(${i},'nota',this.value)" placeholder="nota..." style="flex:1;background:none;border:none;border-bottom:1px dashed rgba(255,255,255,0.1);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:9px;outline:none;padding:1px 0;">
-          <button onclick="removeFinLinha(${i})" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:11px;padding:0 4px;">✕</button>
-        </div>
-      `;
-    } else {
-      div.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
-          <span style="font-size:11px;color:var(--text-mid);">${linha.label}</span>
-          ${linha.link ? `<a href="${linha.link}" style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--gold);text-decoration:none;opacity:0.7;">${linha.linkLabel||''}</a>` : ''}
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;"><div style="width:${pct}%;height:100%;background:${barColor};border-radius:2px;"></div></div>
-          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;">${formatEur(val)}</span>
-        </div>
-        ${linha.nota ? `<div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:${notaColor};">${linha.nota}</div>` : ''}
-      `;
-    }
-    container.appendChild(div);
-  });
-
-  // Add line button in admin
-  if (adminMode) {
-    const addBtn = document.createElement('button');
-    addBtn.textContent = '+ Adicionar linha';
-    addBtn.style.cssText = 'width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:\'DM Mono\',monospace;font-size:9px;padding:6px;cursor:pointer;margin-top:4px;';
-    addBtn.onclick = addFinLinha;
-    container.appendChild(addBtn);
-  }
-
-  // Update totals
-  const falta = total - PAGO;
-  const diff = total - ADJ;
-  const totalEl = document.getElementById('fin-total');
-  const diffEl = document.getElementById('fin-diff');
-  const faltaEl = document.getElementById('fin-falta');
-  if (totalEl) totalEl.textContent = formatEur(total);
-  if (diffEl) diffEl.textContent = `+${formatEur(diff)} face ao adjudicado`;
-  if (faltaEl) faltaEl.textContent = formatEur(falta);
-
-  // Update quarto comp block
-  const quartoLinha = linhas.find(l => l.label && l.label.toLowerCase().includes('quarto'));
-  const quartoValEl = document.getElementById('quarto-valor');
-  const quartoDiffEl = document.getElementById('quarto-diff');
-  if (quartoLinha && quartoValEl) {
-    const v = parseFloat(quartoLinha.valor) || 0;
-    quartoValEl.textContent = v > 0 ? formatEur(v) : 'A definir';
-    quartoValEl.style.color = v > 0 ? 'var(--gold-light)' : 'var(--amber)';
-    if (quartoDiffEl) { quartoDiffEl.textContent = v > 0 ? formatEur(v) : 'A definir'; }
-  }
-}
-
-window.saveFinLinha = async function(i, field, value) {
-  if (!appData.financeiro || !appData.financeiro.length) appData.financeiro = [...FIN_DEFAULT];
-  if (field === 'valor') appData.financeiro[i][field] = parseFloat(value.replace(',', '.')) || 0;
-  else appData.financeiro[i][field] = value;
-  await saveData();
-  renderFinanceiro();
-}
-
-window.addFinLinha = async function() {
-  if (!appData.financeiro || !appData.financeiro.length) appData.financeiro = [...FIN_DEFAULT];
-  appData.financeiro.push({ label: 'Nova linha', valor: 0, nota: '', cor: 'gold' });
-  await saveData();
-  renderFinanceiro();
-}
-
-window.removeFinLinha = async function(i) {
-  if (!appData.financeiro) return;
-  appData.financeiro.splice(i, 1);
-  await saveData();
-  renderFinanceiro();
-}
-
-// ─── MATERIAL DINÂMICO ───
-const DEFAULT_MATERIAL = {
-  cozinha: [
-    { nome: 'Microondas Grill 60 MC 20 Inox Cata', link: '', estado: 'Por Entregar' },
-    { nome: 'Exaustor Ocultável AEG DGE5661HM 700m³ Inox', link: '', estado: 'Por Entregar' },
-    { nome: 'Tampo Bancada Fenólico Mármora PT 300×63×1,2cm', link: '', estado: 'Por Entregar' },
-    { nome: 'Lava-Louças 1 Cuba Sup. Delinia Loft 45×51.5 Inox', link: '', estado: 'Por Entregar' },
-    { nome: 'Forno Multifunções Cata MDS 6106 X VR01', link: '', estado: 'Por Entregar' },
-    { nome: 'Placa Indução Cata IB 6324E2 BK', link: '', estado: 'Por Entregar' },
-    { nome: 'Revestimento PVC Twilight Inspiro 75×45cm', link: '', estado: 'Por Entregar' },
-  ],
-  casabanho: [
-    { nome: 'Móvel Armário CH Zeus/Play 40×32×180 2G2P Branco', link: '', estado: 'Por Entregar' },
-    { nome: 'Móvel Cesto CH Zeus/Play 40×32×180 Branco', link: '', estado: 'Por Entregar' },
-    { nome: 'Móvel Casa de Banho Luca 80×45×84 2G/1P Branco', link: '', estado: 'Por Entregar' },
-    { nome: 'Lavatório Lupi 81×46 Centro BR BLH Gelcoat', link: '', estado: 'Por Entregar' },
-    { nome: 'Revestimento PVC Shine Inspiro 75×45cm', link: '', estado: 'Por Entregar' },
-    { nome: 'Espelho Push 80×80 Bluetooth / Altifalante c/ Luz', link: '', estado: 'Por Entregar' },
-  ]
-};
-
-const ESTADO_COLORS = {
-  'Por Entregar': 'var(--amber)',
-  'Entregue': 'var(--green)',
-  'Anulado': 'var(--red)'
-};
-
-function renderMaterial() {
-  ['cozinha', 'casabanho'].forEach(panel => {
-    const container = document.getElementById(`mat-${panel}-items`);
-    if (!container) return;
-    const addBtn = document.getElementById(`mat-${panel}-add-btn`);
-    if (addBtn) addBtn.style.display = adminMode ? 'inline-block' : 'none';
-
-    const items = (appData.material && appData.material[panel] && appData.material[panel].length)
-      ? appData.material[panel]
-      : DEFAULT_MATERIAL[panel];
-
-    container.innerHTML = '';
-    items.forEach((item, i) => {
-      const row = document.createElement('div');
-      row.className = 'mat-mini-row';
-      row.style.alignItems = 'center';
-
-      const estadoColor = ESTADO_COLORS[item.estado] || 'var(--text-dim)';
-
-      if (adminMode) {
-        row.innerHTML = `
-          <span class="mat-mini-name" contenteditable="true" onblur="saveMaterialField('${panel}',${i},'nome',this.textContent)" style="outline:none;border-bottom:1px dashed var(--gold-border);flex:1;">${item.nome}</span>
-          <select onchange="saveMaterialField('${panel}',${i},'estado',this.value)" style="background:var(--bg3);border:1px solid var(--gold-border);color:${estadoColor};font-family:'DM Mono',monospace;font-size:9px;padding:2px 4px;margin:0 8px;cursor:pointer;">
-            <option ${item.estado==='Por Entregar'?'selected':''}>Por Entregar</option>
-            <option ${item.estado==='Entregue'?'selected':''}>Entregue</option>
-            <option ${item.estado==='Anulado'?'selected':''}>Anulado</option>
-          </select>
-          <input type="text" placeholder="URL produto..." value="${item.link||''}" onblur="saveMaterialField('${panel}',${i},'link',this.value)" style="background:var(--bg3);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:9px;padding:2px 6px;width:140px;">
-          <button onclick="removeMaterialItem('${panel}',${i})" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:12px;padding:0 4px;margin-left:4px;">✕</button>
-        `;
-      } else {
-        row.innerHTML = `
-          <span class="mat-mini-name">${item.nome}</span>
-          <span class="badge" style="background:${estadoColor}22;color:${estadoColor};border:1px solid ${estadoColor}44;font-family:'DM Mono',monospace;font-size:8px;padding:2px 6px;margin:0 8px;white-space:nowrap;">${item.estado}</span>
-          ${item.link ? `<a href="${item.link}" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);text-decoration:none;white-space:nowrap;">ver produto →</a>` : '<span style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--text-dim);opacity:0.3;">—</span>'}
-        `;
-      }
-      container.appendChild(row);
-    });
-  });
-}
-
-window.addMaterialItem = async function(panel) {
-  if (!appData.material) appData.material = {};
-  if (!appData.material[panel] || !appData.material[panel].length) {
-    appData.material[panel] = [...DEFAULT_MATERIAL[panel]];
-  }
-  appData.material[panel].push({ nome: 'Novo artigo', link: '', estado: 'Por Entregar' });
-  await saveData();
-  renderMaterial();
-}
-
-window.removeMaterialItem = async function(panel, idx) {
-  if (!appData.material || !appData.material[panel]) return;
-  appData.material[panel].splice(idx, 1);
-  await saveData();
-  renderMaterial();
-}
-
-window.saveMaterialField = async function(panel, idx, field, value) {
-  if (!appData.material) appData.material = {};
-  if (!appData.material[panel] || !appData.material[panel].length) {
-    appData.material[panel] = [...DEFAULT_MATERIAL[panel]];
-  }
-  appData.material[panel][idx][field] = value;
-  await saveData();
-  if (field === 'estado') renderMaterial();
-}
-
 // ─── ADMIN MODE ───
 window.toggleAdmin = function() {
   if (adminMode) { exitAdmin(); }
@@ -2287,11 +2160,10 @@ window.toggleAdmin = function() {
 
 function enterAdmin() {
   adminMode = true;
-  document.getElementById('admin-btn').textContent = '⚙ Admin';
-  document.getElementById('admin-btn').style.color = 'var(--gold)';
-  document.getElementById('admin-btn').style.borderColor = 'var(--gold)';
+  document.getElementById('admin-btn').textContent = '✕ Sair do Admin';
+  document.getElementById('admin-btn').style.color = 'var(--red)';
+  document.getElementById('admin-btn').style.borderColor = 'var(--red)';
   document.getElementById('admin-panel').style.display = 'block';
-  document.getElementById('admin-overlay').style.display = 'block';
   document.querySelectorAll('[data-editable]').forEach(el => {
     el.contentEditable = 'true';
     el.style.border = '1px dashed var(--gold)';
@@ -2305,17 +2177,14 @@ function enterAdmin() {
   renderEvolucao();
   renderNotes();
   applyLinks();
-  renderMaterial();
-  renderFinanceiro();
 }
 
-window.exitAdmin = function exitAdmin() {
+function exitAdmin() {
   adminMode = false;
   document.getElementById('admin-btn').textContent = '⚙ Admin';
   document.getElementById('admin-btn').style.color = '';
   document.getElementById('admin-btn').style.borderColor = '';
   document.getElementById('admin-panel').style.display = 'none';
-  document.getElementById('admin-overlay').style.display = 'none';
   document.querySelectorAll('[data-editable]').forEach(el => {
     el.contentEditable = 'false';
     el.style.border = '';
@@ -2326,8 +2195,6 @@ window.exitAdmin = function exitAdmin() {
   renderEvolucao();
   renderNotes();
   applyLinks();
-  renderMaterial();
-  renderFinanceiro();
 }
 
 async function saveEditableTexts() {
@@ -2348,19 +2215,11 @@ function applyData() {
   renderEvolucao();
   renderNotes();
   applyLinks();
-  renderMaterial();
-  renderFinanceiro();
 }
 
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', async () => {
   await loadData();
-  // Migração única: publica a conciliação validada no Firestore.
-  if (appData.financeiroVersion !== FIN_VERSION) {
-    appData.financeiro = FIN_DEFAULT.map(linha => ({ ...linha }));
-    appData.financeiroVersion = FIN_VERSION;
-    await saveData();
-  }
   applyData();
   startRealtimeSync();
 });
@@ -2374,30 +2233,17 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 </div>
 
 <!-- ADMIN BUTTON -->
-<button id="admin-btn" onclick="toggleAdmin()" style="position:fixed;bottom:24px;right:24px;z-index:300;background:var(--bg2);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;padding:10px 16px;cursor:pointer;">⚙ Admin</button>
+<button id="admin-btn" onclick="toggleAdmin()" style="position:fixed;bottom:24px;right:24px;z-index:200;background:var(--bg2);border:1px solid var(--gold-border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;padding:10px 16px;cursor:pointer;">⚙ Admin</button>
 
-<!-- ADMIN OVERLAY -->
-<div id="admin-overlay" onclick="exitAdmin()" style="display:none;position:fixed;inset:0;z-index:250;background:rgba(0,0,0,0.5);"></div>
-
-<!-- ADMIN DRAWER -->
-<div id="admin-panel" style="display:none;position:fixed;top:0;right:0;bottom:0;z-index:260;background:var(--bg2);border-left:1px solid var(--gold);padding:24px 20px;width:290px;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,0.7);">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Modo Administrador</div>
-    <button onclick="exitAdmin()" style="background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:18px;line-height:1;">×</button>
-  </div>
+<!-- ADMIN PANEL -->
+<div id="admin-panel" style="display:none;position:fixed;bottom:70px;right:24px;z-index:200;background:var(--bg2);border:1px solid var(--gold);padding:20px;width:300px;max-height:70vh;overflow-y:auto;">
+  <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Modo Administrador</div>
   <div style="font-size:11px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;">
     · Clica nas fotos para substituir<br>
     · Clica nos textos com borda dourada para editar<br>
     · Na cozinha, clica em "Projeto Inicial" / "Projeto Atual" para carregar imagens<br>
     · Na evolução, clica em "Substituir foto"
   </div>
-
-  <div style="margin-bottom:16px;">
-    <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Link do Cliente</div>
-    <button onclick="copyClientLink()" id="copy-link-btn" style="width:100%;background:var(--bg3);border:1px solid var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:10px;cursor:pointer;">🔗 Copiar Link do Cliente</button>
-    <div id="copy-link-feedback" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--green);text-align:center;margin-top:6px;display:none;">✓ Link copiado!</div>
-  </div>
-  <div style="height:1px;background:var(--gold-border);margin-bottom:16px;"></div>
   <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Adicionar Nota</div>
   <select id="nota-tipo" style="width:100%;background:var(--bg3);border:1px solid var(--gold-border);color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:8px;">
     <option>Informação</option>
@@ -2406,7 +2252,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
   </select>
   <textarea id="nota-texto" placeholder="Texto da nota..." style="width:100%;height:80px;background:var(--bg3);border:1px solid var(--gold-border);color:var(--text);padding:8px;font-size:12px;resize:none;margin-bottom:8px;"></textarea>
   <button onclick="addNota()" style="width:100%;background:var(--gold);color:var(--bg);border:none;padding:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;">Adicionar Nota</button>
-  <button onclick="saveEditableTexts().then(()=>alert('Guardado.'))" style="width:100%;background:none;border:1px solid var(--gold-border);color:var(--text-dim);padding:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;margin-top:8px;">Guardar Tudo</button>
+  <button onclick="saveTexts();saveEvolucaoTexts();alert('Guardado.');" style="width:100%;background:none;border:1px solid var(--gold-border);color:var(--text-dim);padding:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;margin-top:8px;">Guardar Tudo</button>
 </div>
 
 </body>

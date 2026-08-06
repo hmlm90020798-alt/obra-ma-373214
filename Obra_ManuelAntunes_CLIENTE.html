@@ -1109,7 +1109,7 @@ footer {
   </div>
 
   <div class="note-box">
-    <strong>Conciliação:</strong> A mão de obra inclui 1.660,24 € relativos à relação apresentada pelo técnico. Ao material de obra foi deduzido o montante de 502,81 € referente a material de iluminação anulado. Os pagamentos de 40% e 10% serão calculados sobre o valor total atualizado. &nbsp;·&nbsp; <strong>IVA de mão de obra à taxa reduzida de 6%</strong> (habitação própria permanente).
+    <strong>Pendentes:</strong> O valor final incorporará ainda o material adicional do técnico em apuramento. Os pagamentos de 40% e 10% serão calculados sobre o valor total confirmado. &nbsp;·&nbsp; <strong>IVA de mão de obra à taxa reduzida de 6%</strong> (habitação própria permanente).
   </div>
 </section>
 
@@ -1141,7 +1141,7 @@ footer {
     <div class="comp-block">
       <div class="comp-col antes" id="coz-antes-col" onclick="openLightbox('coz-antes')" style="cursor:pointer;position:relative;" title="Clica para ver imagem">
         <div class="comp-col-label">Projeto Inicial · Out 2025</div>
-        <div class="comp-col-value">4.257,39 €</div>
+        <div class="comp-col-value">4.038,39 €</div>
         <div class="comp-col-desc">Cozinha original — layout na parede inicial, sem relocação.</div>
         <div id="coz-antes-thumb" style="margin-top:10px;display:none;"><img id="coz-antes-img" src="" style="width:100%;height:80px;object-fit:cover;opacity:0.7;"></div>
         <div style="position:absolute;bottom:8px;right:10px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--text-dim);opacity:0.5;">ver imagem →</div>
@@ -1155,7 +1155,7 @@ footer {
       </div>
       <div class="comp-diff">
         <span class="comp-diff-label">Diferença face ao projeto inicial</span>
-        <span class="comp-diff-value positive">+225,87 €</span>
+        <span class="comp-diff-value positive">+444,87 €</span>
       </div>
     </div>
 
@@ -1360,8 +1360,8 @@ footer {
     <div class="trabalho-item">
       <div class="trabalho-dot" style="background:var(--amber)"></div>
       <div>
-        <div class="trabalho-title">5. Instalação de candeeiros / apliques / suspensão / fitas LED <span class="badge badge-green" style="margin-left:6px;vertical-align:middle;">Conciliado</span></div>
-        <div class="trabalho-desc">Instalação da iluminação do apartamento, incluindo iluminação LED perimetral e central embutida. Valores conciliados com a relação apresentada pelo técnico e com a anulação do material substituído.</div>
+        <div class="trabalho-title">5. Instalação de candeeiros / apliques / suspensão / fitas LED <span class="badge badge-amber" style="margin-left:6px;vertical-align:middle;">A Orçamentar</span></div>
+        <div class="trabalho-desc">Instalação de toda a iluminação do apartamento, incluindo LED RGB perimetral embutido nas sancas e LED central embutido. Orçamentação em curso com o técnico.</div>
       </div>
     </div>
     <div class="trabalho-item">
@@ -1606,7 +1606,7 @@ footer {
         <span class="nota-data">Jun 2026</span>
       </div>
       <div class="nota-texto">
-        A relação apresentada pelo técnico, no total de 1.660,24 €, foi integrada na rubrica de mão de obra. Ao material de obra foi deduzido o valor de 502,81 € correspondente ao material de iluminação anulado.
+        Orçamento da iluminação LED (RGB perimetral + LED central embutido) encontra-se em fase de levantamento com o Sr. Domingos. O valor será comunicado assim que confirmado e adicionado ao quadro financeiro.
       </div>
     </div>
 
@@ -1653,7 +1653,7 @@ footer {
 <script type="module">
 // ─── FIREBASE ───
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, doc, collection, getDoc, getDocs, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, collection, getDoc, getDocs, setDoc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBGdz1_ceb0mPsG2wfbG2tvg5bsYPn7zJo",
@@ -1694,11 +1694,29 @@ async function loadData() {
   } catch(e) { console.warn('Firestore load error:', e); }
 }
 
-async function saveData() { return; }
+async function saveData() {
+  try {
+    // Save main doc without photos
+    const toSave = { ...appData };
+    delete toSave.photos;
+    delete toSave.coz_imgs;
+    await setDoc(DOC_REF, toSave);
+  } catch(e) { console.error('Firestore save error:', e); alert('Erro ao guardar. Verifica a ligação.'); }
+}
 
-async function savePhoto() { return; }
+async function savePhoto(key, src) {
+  try {
+    await setDoc(doc(FOTOS_REF, key), { src });
+    fotosCache[key] = src;
+  } catch(e) { console.error('Photo save error:', e); alert('Erro ao guardar foto.'); }
+}
 
-async function deletePhoto() { return; }
+async function deletePhoto(key) {
+  try {
+    await deleteDoc(doc(FOTOS_REF, key));
+    delete fotosCache[key];
+  } catch(e) { console.error('Photo delete error:', e); }
+}
 
 // Helper — get photos for a panel from cache
 function getPanelPhotos(panel) {
@@ -2030,28 +2048,16 @@ window.removeNota = async function(idx) {
   renderNotes();
 }
 
-window.copyClientLink = function() {
-  const base = window.location.origin + window.location.pathname.replace('index.html', '');
-  const clientUrl = base + 'Obra_ManuelAntunes_CLIENTE.html';
-  navigator.clipboard.writeText(clientUrl).then(() => {
-    const fb = document.getElementById('copy-link-feedback');
-    fb.style.display = 'block';
-    setTimeout(() => { fb.style.display = 'none'; }, 3000);
-  }).catch(() => {
-    prompt('Copia este link:', clientUrl);
-  });
-}
-
 // ─── QUADRO FINANCEIRO DINÂMICO ───
 const FIN_DEFAULT = [
-  { label: 'Mão de Obra', valor: 14883.87, nota: 'inclui 1.660,24 € de material aplicado partilhado pelo técnico', cor: 'amber', link: '#trabalhos', linkLabel: 'ver trabalhos →' },
+  { label: 'Mão de Obra', valor: 13223.63, nota: 'sem alteração', cor: 'text-dim', link: '#trabalhos', linkLabel: 'ver trabalhos →' },
   { label: 'Cozinha', valor: 4483.26, nota: '+225,87 € face ao adjudicado', cor: 'amber' },
   { label: 'Casa de Banho & Roupeiros', valor: 2979.76, nota: '−314,04 € face ao adjudicado', cor: 'green' },
   { label: 'Móvel Hall de Entrada', valor: 728.56, nota: 'novo elemento', cor: 'blue' },
   { label: 'Móvel de Quarto', valor: 1592.60, nota: 'novo elemento', cor: 'blue' },
-  { label: 'Material de Obra', valor: 5496.37, nota: 'dedução de 502,81 € por material de iluminação anulado', cor: 'green' },
+  { label: 'Material de Obra', valor: 5999.18, nota: '+ material técnico em apuramento', cor: 'amber' },
 ];
-const FIN_VERSION = 2;
+
 const PAGO = 13387.00;
 const ADJ = 26774.00;
 
@@ -2257,67 +2263,6 @@ window.saveMaterialField = async function(panel, idx, field, value) {
   if (field === 'estado') renderMaterial();
 }
 
-// ─── ADMIN MODE ───
-window.toggleAdmin = function() {
-  if (adminMode) { exitAdmin(); }
-  else {
-    const pin = prompt('PIN de acesso:');
-    if (pin === ADMIN_PIN) { enterAdmin(); }
-    else if (pin !== null) { alert('PIN incorreto.'); }
-  }
-}
-
-function enterAdmin() {
-  adminMode = true;
-  document.getElementById('admin-btn').textContent = '⚙ Admin';
-  document.getElementById('admin-btn').style.color = 'var(--gold)';
-  document.getElementById('admin-btn').style.borderColor = 'var(--gold)';
-  document.getElementById('admin-panel').style.display = 'block';
-  document.getElementById('admin-overlay').style.display = 'block';
-  document.querySelectorAll('[data-editable]').forEach(el => {
-    el.contentEditable = 'true';
-    el.style.border = '1px dashed var(--gold)';
-    el.style.padding = '4px';
-    el.style.outline = 'none';
-    el.addEventListener('blur', saveEditableTexts);
-  });
-  document.getElementById('coz-antes-col').title = 'Clica para carregar imagem do projeto inicial';
-  document.getElementById('coz-agora-col').title = 'Clica para carregar imagem do projeto atual';
-  renderPhotoGrids();
-  renderEvolucao();
-  renderNotes();
-  applyLinks();
-  renderMaterial();
-  renderFinanceiro();
-}
-
-window.exitAdmin = function exitAdmin() {
-  adminMode = false;
-  document.getElementById('admin-btn').textContent = '⚙ Admin';
-  document.getElementById('admin-btn').style.color = '';
-  document.getElementById('admin-btn').style.borderColor = '';
-  document.getElementById('admin-panel').style.display = 'none';
-  document.getElementById('admin-overlay').style.display = 'none';
-  document.querySelectorAll('[data-editable]').forEach(el => {
-    el.contentEditable = 'false';
-    el.style.border = '';
-    el.style.padding = '';
-    el.removeEventListener('blur', saveEditableTexts);
-  });
-  renderPhotoGrids();
-  renderEvolucao();
-  renderNotes();
-  applyLinks();
-  renderMaterial();
-  renderFinanceiro();
-}
-
-async function saveEditableTexts() {
-  document.querySelectorAll('[data-editable]').forEach(el => {
-    if (el.id) appData.texts[el.id] = el.textContent;
-  });
-  await saveData();
-}
 
 // ─── APPLY DATA ───
 function applyData() {
@@ -2348,6 +2293,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
   <img id="lightbox-img" src="" style="max-width:90vw;max-height:90vh;object-fit:contain;box-shadow:0 0 60px rgba(0,0,0,0.8);">
   <div style="position:absolute;top:20px;right:24px;color:var(--text-dim);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;">ESC / clica para fechar</div>
 </div>
+
+
+
 
 </body>
 </html>
