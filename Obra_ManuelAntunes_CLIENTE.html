@@ -1109,7 +1109,7 @@ footer {
   </div>
 
   <div class="note-box">
-    <strong>Pendentes:</strong> O valor final incorporará ainda o material adicional do técnico em apuramento. Os pagamentos de 40% e 10% serão calculados sobre o valor total confirmado. &nbsp;·&nbsp; <strong>IVA de mão de obra à taxa reduzida de 6%</strong> (habitação própria permanente).
+    <strong>Pendentes:</strong> O valor de mão de obra inclui 2.160,24 € relativos a material aplicado e instalação dos móveis de quarto. Os pagamentos de 40% e 10% serão calculados sobre o valor total confirmado. &nbsp;·&nbsp; <strong>IVA de mão de obra à taxa reduzida de 6%</strong> (habitação própria permanente).
   </div>
 </section>
 
@@ -1676,6 +1676,14 @@ let appData = { texts: {}, notes: [], evolucao: [], links: {}, material: {} };
 let fotosCache = {}; // key -> base64, stored in subcollection
 
 // ─── FIRESTORE SYNC ───
+const MAO_OBRA_ATUALIZADA = { valor: 15383.87, nota: 'inclui 2.160,24 € relativos a material aplicado e instalação dos móveis de quarto' };
+function atualizarMaoObra() {
+  if (!Array.isArray(appData.financeiro)) appData.financeiro = [...FIN_DEFAULT];
+  let linha = appData.financeiro.find(l => l.label && l.label.toLowerCase().includes('mão de obra'));
+  if (!linha) { linha = { ...FIN_DEFAULT[0] }; appData.financeiro.unshift(linha); }
+  const mudou = Number(linha.valor) !== MAO_OBRA_ATUALIZADA.valor || linha.nota !== MAO_OBRA_ATUALIZADA.nota;
+  linha.valor = MAO_OBRA_ATUALIZADA.valor; linha.nota = MAO_OBRA_ATUALIZADA.nota; return mudou;
+}
 async function loadData() {
   try {
     // Load main doc (texts, notes, evolucao metadata, links, material)
@@ -1691,6 +1699,7 @@ async function loadData() {
     const fotosSnap = await getDocs(FOTOS_REF);
     fotosCache = {};
     fotosSnap.forEach(d => { fotosCache[d.id] = d.data().src; });
+    if (atualizarMaoObra()) await saveData();
   } catch(e) { console.warn('Firestore load error:', e); }
 }
 
@@ -1733,6 +1742,7 @@ function startRealtimeSync() {
       const d = snap.data();
       appData = { texts: {}, notes: [], evolucao: [], links: {}, material: {}, ...d };
       delete appData.photos; delete appData.coz_imgs;
+      atualizarMaoObra();
       applyData();
     }
   });
@@ -2050,7 +2060,7 @@ window.removeNota = async function(idx) {
 
 // ─── QUADRO FINANCEIRO DINÂMICO ───
 const FIN_DEFAULT = [
-  { label: 'Mão de Obra', valor: 13223.63, nota: 'sem alteração', cor: 'text-dim', link: '#trabalhos', linkLabel: 'ver trabalhos →' },
+  { label: 'Mão de Obra', valor: 15383.87, nota: 'inclui 2.160,24 € relativos a material aplicado e instalação dos móveis de quarto', cor: 'text-dim', link: '#trabalhos', linkLabel: 'ver trabalhos →' },
   { label: 'Cozinha', valor: 4483.26, nota: '+225,87 € face ao adjudicado', cor: 'amber' },
   { label: 'Casa de Banho & Roupeiros', valor: 2979.76, nota: '−314,04 € face ao adjudicado', cor: 'green' },
   { label: 'Móvel Hall de Entrada', valor: 728.56, nota: 'novo elemento', cor: 'blue' },

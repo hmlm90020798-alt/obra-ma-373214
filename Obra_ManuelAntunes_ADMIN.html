@@ -1087,11 +1087,11 @@ footer {
         <div style="font-size:11px;color:var(--text-mid);margin-bottom:4px;">Mão de Obra</div>
         <div style="display:flex;align-items:center;gap:8px;">
           <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
-            <div style="width:48.2%;height:100%;background:rgba(200,200,200,0.4);border-radius:2px;"></div>
+            <div style="width:57.5%;height:100%;background:rgba(200,200,200,0.4);border-radius:2px;"></div>
           </div>
-          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;">13.223,63 €</span>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;">15.383,87 €</span>
         </div>
-        <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--text-dim);">sem alteração</div>
+        <div style="text-align:right;margin-top:3px;font-family:'DM Mono',monospace;font-size:9px;color:var(--text-dim);">inclui 2.160,24 € relativos a material aplicado e instalação dos móveis de quarto</div>
       </div>
 
       <div style="margin-bottom:18px;">
@@ -1151,10 +1151,10 @@ footer {
 
       <div style="border-top:1px solid var(--gold-border);margin-top:20px;padding-top:16px;display:flex;justify-content:space-between;align-items:baseline;">
         <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);">Total confirmado</span>
-        <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold-light);">27.414,39 €</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold-light);">29.574,63 €</span>
       </div>
       <div style="text-align:right;margin-top:4px;">
-        <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);">+640,39 € face ao adjudicado</span>
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);">+2.800,63 € face ao adjudicado</span>
       </div>
     </div>
   </div>
@@ -1176,12 +1176,12 @@ footer {
     </div>
     <div class="fin-row total-row">
       <span class="fin-row-label">Valor em falta (excl. pendentes)</span>
-      <span class="fin-row-value alert">14.027,39 €</span>
+      <span class="fin-row-value alert">16.187,63 €</span>
     </div>
   </div>
 
   <div class="note-box">
-    <strong>Pendentes:</strong> O valor final incorporará ainda a iluminação LED (a orçamentar com o técnico) e o móvel de quarto (a definir). Os pagamentos de 40% e 10% serão calculados sobre o valor total confirmado. &nbsp;·&nbsp; <strong>IVA de mão de obra à taxa reduzida de 6%</strong> (habitação própria permanente).
+    <strong>Pendentes:</strong> O valor final incorporará ainda a iluminação LED (a orçamentar com o técnico). Os pagamentos de 40% e 10% serão calculados sobre o valor total confirmado. &nbsp;·&nbsp; <strong>IVA de mão de obra à taxa reduzida de 6%</strong> (habitação própria permanente).
   </div>
 </section>
 
@@ -1796,12 +1796,21 @@ const DOC_REF = doc(db, 'obra', '373214');
 const ADMIN_PIN = '2404';
 let adminMode = false;
 let appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {} };
+const MAO_OBRA_ATUALIZADA = { valor: 15383.87, nota: 'inclui 2.160,24 € relativos a material aplicado e instalação dos móveis de quarto' };
+function atualizarMaoObra() {
+  if (!Array.isArray(appData.financeiro)) return false;
+  const linha = appData.financeiro.find(l => l.label && l.label.toLowerCase().includes('mão de obra'));
+  if (!linha) return false;
+  const mudou = Number(linha.valor) !== MAO_OBRA_ATUALIZADA.valor || linha.nota !== MAO_OBRA_ATUALIZADA.nota;
+  linha.valor = MAO_OBRA_ATUALIZADA.valor; linha.nota = MAO_OBRA_ATUALIZADA.nota; return mudou;
+}
 
 // ─── FIRESTORE SYNC ───
 async function loadData() {
   try {
     const snap = await getDoc(DOC_REF);
     if (snap.exists()) appData = { photos: {}, texts: {}, notes: [], evolucao: [], coz_imgs: {}, links: {}, ...snap.data() };
+    if (atualizarMaoObra()) await saveData();
   } catch(e) { console.warn('Firestore load error:', e); }
   return appData;
 }
