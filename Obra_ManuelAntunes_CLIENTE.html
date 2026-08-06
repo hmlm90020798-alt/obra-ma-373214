@@ -1173,6 +1173,7 @@ footer {
       <div id="mat-cozinha-items"><!-- dynamic --></div>
     </div>
   </div>
+  </div>
 
   <!-- CASA DE BANHO -->
   <div class="obra-panel" id="panel-casabanho">
@@ -1214,6 +1215,7 @@ footer {
       <div id="mat-casabanho-items"><!-- dynamic --></div>
     </div>
   </div>
+  </div>
 
   <!-- ROUPEIROS -->
   <div class="obra-panel" id="panel-roupeiros">
@@ -1247,6 +1249,7 @@ footer {
     <div id="add-photo-btn-roupeiros" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('roupeiros')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
+  </div>
   </div>
 
   <!-- MÓVEL HALL -->
@@ -1650,7 +1653,7 @@ footer {
 <script type="module">
 // ─── FIREBASE ───
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, doc, collection, getDoc, getDocs, setDoc, deleteDoc, deleteField, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, collection, getDoc, getDocs, setDoc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBGdz1_ceb0mPsG2wfbG2tvg5bsYPn7zJo",
@@ -1693,10 +1696,11 @@ async function loadData() {
 
 async function saveData() {
   try {
-    // Save main doc without photos (merge — nunca substitui o documento inteiro,
-    // para não apagar campos usados por outras versões da página, ex. financeiro/material)
-    const toSave = { ...appData, photos: deleteField(), coz_imgs: deleteField() };
-    await setDoc(DOC_REF, toSave, { merge: true });
+    // Save main doc without photos
+    const toSave = { ...appData };
+    delete toSave.photos;
+    delete toSave.coz_imgs;
+    await setDoc(DOC_REF, toSave);
   } catch(e) { console.error('Firestore save error:', e); alert('Erro ao guardar. Verifica a ligação.'); }
 }
 

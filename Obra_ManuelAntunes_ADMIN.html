@@ -1272,6 +1272,7 @@ footer {
       </div>
     </div>
   </div>
+  </div>
 
   <!-- CASA DE BANHO -->
   <div class="obra-panel" id="panel-casabanho">
@@ -1336,6 +1337,7 @@ footer {
       </div>
     </div>
   </div>
+  </div>
 
   <!-- ROUPEIROS -->
   <div class="obra-panel" id="panel-roupeiros">
@@ -1369,6 +1371,7 @@ footer {
     <div id="add-photo-btn-roupeiros" style="display:none;margin-top:12px;">
       <button onclick="addPhotoSlot('roupeiros')" style="width:100%;background:none;border:1px dashed var(--gold-border);color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:12px;cursor:pointer;">+ Adicionar Foto</button>
     </div>
+  </div>
   </div>
 
   <!-- MÓVEL HALL -->
@@ -1804,7 +1807,7 @@ async function loadData() {
 }
 
 async function saveData() {
-  try { await setDoc(DOC_REF, appData, { merge: true }); }
+  try { await setDoc(DOC_REF, appData); }
   catch(e) { console.error('Firestore save error:', e); alert('Erro ao guardar. Verifica a ligação.'); }
 }
 
